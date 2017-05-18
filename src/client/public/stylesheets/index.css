@@ -1,0 +1,73 @@
+body {
+  background-color: #2b2b2b;
+  padding-bottom: 50px; }
+
+.wym-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  transition: all 1s; }
+  .wym-header input {
+    margin-top: 40px;
+    height: 50px; }
+
+.onstart {
+  padding-top: 150px; }
+  .onstart img {
+    height: 300px;
+    width: 300px; }
+
+.wym-logo {
+  height: 200px;
+  transition: all 1s; }
+
+.wym-content {
+  background-color: white;
+  border-radius: 5px; }
+
+.wym-results {
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer; }
+  .wym-results .wym-search-result:hover {
+    background-color: #e3e3e3;
+    transition: background-color 0.3s; }
+  .wym-results .wym-search-result-image {
+    width: 100px; }
+  .wym-results .wym-search-result-text {
+    vertical-align: middle;
+    color: black; }
+
+.active {
+  background-color: #e3e3e3; }
+
+.wym-movie-info {
+  padding: 50px; }
+
+.wym-movie-info-text {
+  text-align: left;
+  height: 200px;
+  padding-left: 50px;
+  margin-bottom: 40px; }
+
+.wym-plotbuilder {
+  margin-top: 30px; }
+
+.wym-movie-info-plot {
+  margin-top: 30px; }
+
+.wym-movieposter {
+  height: 200px; }
+  .wym-movieposter--small {
+    height: 100px; }
+
+.wym-title {
+  font-size: 25pt; }
+
+.wym-subtitle {
+  font-size: 16pt; }
+
+.wym-time-input input {
+  width: 50px;
+  margin-right: 5px; }

@@ -1,0 +1,100 @@
+@import 'variables';
+
+body {
+  background-color: $body-background-color;
+  padding-bottom: 50px;
+}
+
+.wym-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  transition: all 1s;
+  input {
+    margin-top: 40px;
+    height: 50px;
+  }
+}
+
+.onstart {
+  padding-top:  150px;
+  img {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+.wym-logo {
+  height: 200px;
+  transition: all 1s;
+}
+
+.wym-content {
+  background-color: $content-background-color;
+  border-radius: 5px;
+}
+
+.wym-results {
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  .wym-search-result {
+      &:hover {
+        background-color: $menu-point-hover-color;
+        transition: background-color $default-hover-time;
+      }
+      &-image {
+        width: 100px;
+      }
+      &-text {
+        vertical-align: middle;
+        color: black;
+      }
+  }
+}
+
+.active {
+  background-color: $menu-point-hover-color;
+}
+
+.wym-movie-info {
+  padding: 50px;
+}
+
+.wym-movie-info-text {
+  text-align: left;
+  height: $movie-info-height;
+  padding-left: 50px;
+  margin-bottom: 40px;
+}
+
+.wym-plotbuilder {
+  margin-top: 30px;
+}
+
+.wym-movie-info-plot {
+  margin-top: 30px;
+}
+
+.wym-movieposter {
+  height: $movie-info-height;
+  &--small {
+    height: 100px;
+  }
+}
+
+.wym-title {
+  font-size: 25pt;
+}
+
+.wym-subtitle {
+  font-size: 16pt;
+}
+
+.wym-time-input {
+  input {
+    width: 50px;
+    margin-right: 5px;
+  }
+}

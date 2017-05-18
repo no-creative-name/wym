@@ -1,0 +1,78 @@
+[
+    {
+    "key":0,
+    "title":"Raiders of the Lost Ark",
+    "img":"https://upload.wikimedia.org/wikipedia/en/4/4c/Raiders_of_the_Lost_Ark.jpg",
+    "duration":15100,
+    "year":1981,
+    "genre":"Adventure",
+    "plot":[
+      {
+        "key":"0",
+        "text":"In 1936, archaeologist Indiana Jones braves an ancient booby-trapped temple in Peru and retrieves a golden idol. He is confronted by rival archaeologist René Belloq and the indigenous Hovito people. Surrounded and outnumbered, Indy surrenders the idol to Belloq and escapes aboard a waiting floatplane. ",
+        "timecode":1500
+      },
+      {
+        "key":"1",
+        "text":"The pair travels to Cairo, where they meet up with Indys friend Sallah, a skilled excavator. Sallah informs them that Belloq and the Nazis are digging for the Well of Souls with a replica of the headpiece (created from the scar on Tohts hand). They quickly realize the Nazi headpiece is incomplete and that the Nazis are digging in the wrong place. The Nazis kidnap Marion and it appears to Jones that she is killed in an exploding truck. ",
+        "timecode":4500
+      },
+      {
+        "key":"2",
+        "text":"In Washington, D.C., the Army Intelligence agents inform Jones and Marcus Brody that the Ark is someplace safe and will be studied by top men. The Ark is shown being stored in a giant government warehouse among countless similar crates.",
+        "timecode":12000
+      }
+    ]
+    },
+    {
+    "key":1,
+    "title":"Jurassic Park",
+    "img":"http://img.moviepostershop.com/jurassic-park-movie-poster-1992-1020141477.jpg",
+    "duration":20700,
+    "year":1993,
+    "genre":"Action",
+    "plot":[
+      {
+        "key":"0",
+        "text":"Industrialist John Hammond and his bioengineering company, InGen, have created a theme park called Jurassic Park on Isla Nublar, a Costa Rican island, populated with cloned dinosaurs. After one of the dinosaur handlers is killed by a Velociraptor, the parks investors, represented by lawyer Donald Gennaro, say that experts must visit the park and certify it as safe. Gennaro invites mathematician Ian Malcolm, while Hammond invites paleontologist Dr. Alan Grant and paleobotanist Dr. Ellie Sattler. Upon arrival, the group is stunned to see a live Brachiosaurus. ",
+        "timecode":1500
+      },
+      {
+        "key":"1",
+        "text":"Jurassic Parks computer programmer, Dennis Nedry, has been bribed by Dodgson, a man involved with a corporate rival, to steal dinosaur embryos. Nedry deactivates the parks security system to gain access to the embryo storage room. Nedry stores the embryos inside a canister disguised as Barbasol shaving cream, supplied by Dodgson. Because of Nedry, the power goes out and the tour vehicles become stuck. Most of the parks electric fences are deactivated as well, allowing the Tyrannosaurus to escape and attack the tour group. Grant, Lex, and Tim escape, while the Tyrannosaurus injures Malcolm and devours Gennaro. On his way to deliver the embryos to the islands docks, Nedry becomes lost in the rain, crashes his Jeep Wrangler, and is killed by a Dilophosaurus. ",
+        "timecode":4500
+      },
+      {
+        "key":"2",
+        "text":"Grant, Tim and Lex finally reach the visitor center. Grant heads out to look for Sattler, leaving Tim & Lex inside. Tim and Lex are pursued by the raptors in an industrial kitchen, but they escape and join Grant and Sattler. Lex restores full power from the control room, allowing the group to call Hammond, who in turn calls for help. The group is cornered by the raptors, but they are able to escape when the Tyrannosaurus suddenly appears and kills the raptors. Hammond arrives in a Jeep with Malcolm, and the entire group boards a helicopter to leave the island.",
+        "timecode":12000
+      }
+    ]
+    },
+    {
+    "key":2,
+    "title":"The Hunger Games",
+    "img":"https://2982-presscdn-29-70-pagely.netdna-ssl.com/wp-content/uploads/2015/11/The-Hunger-Games-Poster1.jpg",
+    "duration":22200,
+    "year":2012,
+    "genre":"Science Fiction",
+    "plot":[
+      {
+        "key":"0",
+        "text":"As punishment for a past rebellion, each of the 12 districts of the nation of Panem is forced by the victorious Capitol to annually select two tributes, one boy and one girl between the ages of 12 and 18, to fight to the death in the Hunger Games. In District 12, Katniss Everdeen volunteers after her younger sister Primrose is chosen by lot. She and the male tribute, Peeta Mellark, are escorted to the Capitol by chaperone Effie Trinket and their mentor Haymitch Abernathy, a past District 12 victor, now an alcoholic. Haymitch impresses on them the importance of gaining sponsors, as they can provide gifts of food and supplies during the Games. During a televised interview, Peeta publicly expresses his love for Katniss, which she initially takes as an attempt to earn sponsors for himself, though she later learns that he means it. While training, Katniss observes the Careers: Marvel, Glimmer, Cato, and Clove, tributes from Districts 1 and 2 who have been training for the Games from an early age. ",
+        "timecode":1500
+      },
+      {
+        "key":"1",
+        "text":"After Rue helps Katniss recover from the poison, they become friends and allies. Katniss devises a plan to destroy the cache of supplies that the Careers have been hoarding.  ",
+        "timecode":4500
+      },
+      {
+        "key":"2",
+        "text":"Then Crane has wild beasts unleashed into the arena.",
+        "timecode":12000
+      }
+    ]
+    }
+
+]
