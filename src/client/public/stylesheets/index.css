@@ -1,35 +1,55 @@
-body {
-  background-color: #2b2b2b;
-  padding-bottom: 50px; }
-
 .wym-header {
   padding-top: 40px;
   padding-bottom: 40px;
   text-align: center;
   transition: all 1s; }
   .wym-header input {
-    margin-top: 40px;
-    height: 50px; }
+    font-size: 2em;
+    padding-left: 50px;
+    height: 50px;
+    width: 600px; }
 
 .onstart {
   padding-top: 150px; }
   .onstart img {
-    height: 300px;
-    width: 300px; }
+    height: 300px; }
 
 .wym-logo {
   height: 200px;
   transition: all 1s; }
 
-.wym-content {
-  background-color: white;
-  border-radius: 5px; }
+.wym-movie-search {
+  margin-top: 40px; }
+
+.wym-movie-search-icon {
+  color: #e3e3e3;
+  position: absolute;
+  z-index: 1;
+  margin-left: 5px;
+  font-family: 'Material Icons';
+  font-size: 40px;
+  line-height: 1.2;
+  margin-right: 40px;
+  transition: all 1s; }
+  .wym-movie-search-icon-active {
+    color: #2b2b2b;
+    position: absolute;
+    z-index: 1;
+    margin-left: 5px;
+    font-family: 'Material Icons';
+    font-size: 40px;
+    line-height: 1.2;
+    margin-right: 40px;
+    transition: all 1s; }
 
 .wym-results {
   background-color: white;
-  position: absolute;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1;
-  cursor: pointer; }
+  cursor: pointer;
+  width: 600px; }
   .wym-results .wym-search-result:hover {
     background-color: #e3e3e3;
     transition: background-color 0.3s; }
@@ -42,12 +62,16 @@ body {
 .active {
   background-color: #e3e3e3; }
 
+@media only screen and (max-width: 768px) {
+  .wym-search-result-text {
+    font-size: 1.5em; } }
+
 .wym-movie-info {
   padding: 50px; }
 
 .wym-movie-info-text {
   text-align: left;
-  height: 200px;
+  height: 250px;
   padding-left: 50px;
   margin-bottom: 40px; }
 
@@ -55,10 +79,15 @@ body {
   margin-top: 30px; }
 
 .wym-movie-info-plot {
-  margin-top: 30px; }
+  height: 0px;
+  opacity: 0;
+  transition: all 1s; }
+  .wym-movie-info-plot-active {
+    margin-top: 30px;
+    opacity: 100; }
 
 .wym-movieposter {
-  height: 200px; }
+  height: 250px; }
   .wym-movieposter--small {
     height: 100px; }
 
@@ -71,3 +100,11 @@ body {
 .wym-time-input input {
   width: 50px;
   margin-right: 5px; }
+
+body {
+  background-color: #2b2b2b;
+  padding-bottom: 50px; }
+
+.wym-content {
+  background-color: white;
+  border-radius: 5px; }

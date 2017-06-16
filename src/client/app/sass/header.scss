@@ -1,0 +1,53 @@
+@import 'variables/colors';
+
+.wym-header {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  transition: all 1s;
+  input {
+    font-size: 2em;
+    padding-left: 50px;
+    height: 50px;
+    width: 600px;
+  }
+}
+
+.onstart {
+  padding-top:  150px;
+  img {
+    height: 300px;
+  }
+}
+
+.wym-logo {
+  height: 200px;
+  transition: all 1s;
+}
+
+.wym-movie-search {
+  margin-top: 40px;
+}
+
+.wym-movie-search-icon {
+  color: $menu-point-hover-color;
+  position: absolute;
+  z-index: 1;
+  margin-left: 5px;
+  font-family: 'Material Icons';
+  font-size: 40px;
+  line-height: 1.2;
+  margin-right: 40px;
+  transition: all 1s;
+  &-active {
+    color: $body-background-color;
+    position: absolute;
+    z-index: 1;
+    margin-left: 5px;
+    font-family: 'Material Icons';
+    font-size: 40px;
+    line-height: 1.2;
+    margin-right: 40px;
+    transition: all 1s;
+  }
+}

@@ -15,11 +15,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isSearchInProgress: false,
+      isStart: true,
+      movieSearchValue: "",
       movieResults: [],
       movieResultHovered: 0,
       numberOfMovieResults: 0,
-      isSearchInProgress: false,
-      isStart: true,
       currentMovieData: {
         "key": null,
         "title":"XXX",
@@ -36,8 +37,9 @@ class App extends React.Component {
       }
     }
 
+    this.onMovieSearchInput = this.onMovieSearchInput.bind(this);
     this.searchByTitle = this.searchByTitle.bind(this);
-    this.onMovieSelection = this.onMovieSelection.bind(this);
+    this.selectMovie = this.selectMovie.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
 
   }
@@ -51,11 +53,17 @@ class App extends React.Component {
       headerClass+=" onstart";
     }
 
+    let searchIconClass = "wym-movie-search-icon";
+    if (this.state.isSearchInProgress) {
+      searchIconClass+="-active";
+    }
+
     return <div onKeyDown={this.onKeyDown}>
       <div className={headerClass}>
         <Logo className="wym-header-logo"></Logo>
         <div className="wym-movie-search">
-          <OnTypeInput value="SEARCH FOR A MOVIE" onSubmit={this.searchByTitle}></OnTypeInput>
+          <span className={searchIconClass}>search</span>
+          <OnTypeInput value={this.state.movieSearchValue} onChange={this.onMovieSearchInput} onSubmit={this.searchByTitle}>search</OnTypeInput>
           <table className="table is-narrow wym-results">
             <tfoot>
               {movieResultsDiv}
@@ -70,12 +78,17 @@ class App extends React.Component {
 
   }
 
+  onMovieSearchInput (value) {
+    this.setState({movieSearchValue: value});
+    this.setState({isSearchInProgress: true, isStart: false});
+  }
+
   searchByTitle (searchTerm) {
 
     let movieResults = [];
     let movieResultCounter = 0;
 
-    this.setState({isSearchInProgress: true, movieResultHovered: -1, isStart: false});
+    this.setState({movieResultHovered: -1});
     TestMovieData.filter(
       function(movie) {
         if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())){
@@ -90,23 +103,23 @@ class App extends React.Component {
 
   }
 
-  onMovieSelection (key) {
+  selectMovie (key) {
     this.setState({currentMovieData: this.state.movieResults[key]});
+    this.setState({movieSearchValue: this.state.movieResults[key].title});
     this.setState({isSearchInProgress: false});
   }
 
   getMovieResults () {
 
     let movieResults = [];
-    console.log(this.state.isSearchInProgress);
+
     if(this.state.isSearchInProgress) {
       for (let i = 0; i < this.state.movieResults.length; i++) {
         if(this.state.movieResultHovered == i) {
-          console.log("");
-          movieResults.push(<SearchResult key={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.onMovieSelection}></SearchResult>);
+          movieResults.push(<SearchResult key={i} resultNumber={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
         }
         else {
-          movieResults.push(<SearchResult key={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.onMovieSelection}></SearchResult>);
+          movieResults.push(<SearchResult key={i} resultNumber={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
         }
       }
     }
@@ -114,6 +127,7 @@ class App extends React.Component {
   }
 
   onKeyDown(event) {
+
     if(event.keyCode == 40) {
       if(this.state.movieResultHovered < this.state.numberOfMovieResults-1) {
         let movieResultHovered = this.state.movieResultHovered+1;
@@ -128,7 +142,7 @@ class App extends React.Component {
     }
     if(event.keyCode == 13) {
       this.setState({isSearchInProgress: false});
-      this.onMovieSelection(this.state.movieResultHovered);
+      this.selectMovie(this.state.movieResultHovered);
     }
   }
 

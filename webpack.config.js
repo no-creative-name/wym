@@ -12,6 +12,10 @@ var config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
+  devServer: {
+    open: true, // to open the local server in browser
+    contentBase: __dirname + '/src/client',
+  },
   module : {
     loaders : [
       {
@@ -27,6 +31,13 @@ var config = {
       {
         test : /\.css?/,
         loader : 'style-loader!css-loader'
+      },
+      {
+        test : /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        }
       }
     ]
   },

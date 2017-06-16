@@ -49,6 +49,13 @@ export default class TimecodeInput extends React.Component {
 		let minutes = this.state.minutes;
 		let seconds = this.state.seconds;
 
+		if(minutes == 'm') {
+			minutes = '0';
+		}
+		if(seconds == 's') {
+			seconds = '0';
+		}
+
 		let zero = "" + 0;
 
 		if (minutes.toString(10).length == 1) {
@@ -59,6 +66,7 @@ export default class TimecodeInput extends React.Component {
 		}
 
 		let timecode = hours.concat(minutes.concat(seconds));
+
 		if(this.props.onSubmit) {
 			this.props.onSubmit(timecode);
 		}

@@ -22,13 +22,14 @@ export default class SearchResult extends React.Component {
       <td className="wym-search-result-image">
         <img className="wym-movieposter--small" src={this.props.movieResult.img}></img>
       </td>
-      <td className="wym-search-result-text">{this.props.movieResult.title} ({this.props.movieResult.year})</td>
+      <td className="wym-search-result-text">{this.props.movieResult.title}</td>
+      <td className="wym-search-result-text">{this.props.movieResult.year}</td>
     </tr>
   }
 
   onClick () {
     if(this.props.onSubmit) {
-      this.props.onSubmit(this.props.movieResult.key);
+      this.props.onSubmit(this.props.resultNumber);
     }
   }
 

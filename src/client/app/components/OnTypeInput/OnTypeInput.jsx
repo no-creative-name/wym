@@ -13,7 +13,7 @@ export default class OnTypeInput extends React.Component {
   }
 
   render () {
-    return <input className="input" value={this.state.value} onChange={this.onChange} onClick={this.onClick}/>
+    return <input className="input" value={this.props.value} onChange={this.onChange} onClick={this.onClick} />
   }
 
   onChange (event) {
@@ -26,16 +26,16 @@ export default class OnTypeInput extends React.Component {
 
 
   onClick (event) {
-    this.setState({value: ''});
+    this.props.onChange('');
   }
 
   onSubmit (value) {
     if(this.props.onSubmit) {
       if(value == "") {
-        this.props.onSubmit("äöü");
+        this.props.onSubmit("");
       }
       else {
-      this.props.onSubmit(value);
+        this.props.onSubmit(value);
       }
     }
   }

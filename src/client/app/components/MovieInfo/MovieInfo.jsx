@@ -16,6 +16,12 @@ export default class MovieInfo extends React.Component {
   }
 
   render () {
+
+    let plotClass = "box wym-movie-info-plot";
+    if(this.state.fullplot != '') {
+      plotClass+="-active";
+    }
+
     if(this.props.movie.key != null) {
       return <div className="wym-movie-info">
         <div className="columns">
@@ -29,7 +35,7 @@ export default class MovieInfo extends React.Component {
         </div>
         <div className="wym-plotbuilder">
           <TimecodeInput onSubmit={this.buildPlot}></TimecodeInput>
-          <div className="box wym-movie-info-plot">{this.state.fullplot}</div>
+          <div className={plotClass}>{this.state.fullplot}</div>
         </div>
       </div>;
     }

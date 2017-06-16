@@ -1,0 +1,23 @@
+.wym-results {
+  background-color: white;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  cursor: pointer;
+  width: 600px; }
+  .wym-results .wym-search-result:hover {
+    background-color: #e3e3e3;
+    transition: background-color 0.3s; }
+  .wym-results .wym-search-result-image {
+    width: 100px; }
+  .wym-results .wym-search-result-text {
+    vertical-align: middle;
+    color: black; }
+
+.active {
+  background-color: #e3e3e3; }
+
+@media only screen and (max-width: 768px) {
+  .wym-search-result-text {
+    font-size: 1.5em; } }

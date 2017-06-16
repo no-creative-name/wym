@@ -11,7 +11,6 @@ export default class Input extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.focus = this.focus.bind(this);
   }
 
   render () {
