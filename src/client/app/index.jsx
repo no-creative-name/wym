@@ -58,7 +58,7 @@ class App extends React.Component {
       searchIconClass+="-active";
     }
 
-    return <div onKeyDown={this.onKeyDown}>
+    return <div className="total" onKeyDown={this.onKeyDown}>
       <div className={headerClass}>
         <Logo className="wym-header-logo"></Logo>
         <div className="wym-movie-search">
@@ -71,7 +71,7 @@ class App extends React.Component {
           </table>
         </div>
       </div>
-      <div className="container wym-content">
+      <div className="wym-content">
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>
     </div>;

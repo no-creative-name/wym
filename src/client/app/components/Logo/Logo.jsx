@@ -11,7 +11,8 @@ export default class Logo extends React.Component {
     return <div className="columns">
       <div className="column is-1"></div>
       <div className="column is-10">
-        <img className="wym-logo" src="app/images/logo_white.png"></img>
+        <img className="wym-logo" src="app/images/logo_wm_white.png"></img>
+        <img className="wym-logo-y" src="app/images/logo_y_white.png"></img>
       </div>
       <div className="column is-1"></div>
     </div>

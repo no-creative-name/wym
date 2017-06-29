@@ -24,7 +24,7 @@ export default class MovieInfo extends React.Component {
 
     if(this.props.movie.key != null) {
       return <div className="wym-movie-info">
-        <div className="columns">
+        <div className="wym-movie-meta">
           <MoviePoster className="column is-4" imageSource={this.props.movie.img}></MoviePoster>
           <div className="column is-8 wym-movie-info-text">
             <div className="wym-title">{this.props.movie.title}</div>

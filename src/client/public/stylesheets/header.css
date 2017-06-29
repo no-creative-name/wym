@@ -13,10 +13,28 @@
   padding-top: 150px; }
   .onstart img {
     height: 300px; }
+  .onstart .wym-logo-y {
+    margin-left: -300px; }
 
 .wym-logo {
   height: 200px;
-  transition: all 1s; }
+  transition: all 1s;
+  -webkit-animation: 2s spin 1s 1 ease-in-out; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  40% {
+    -webkit-transform: rotate(180deg); }
+  60% {
+    -webkit-transform: rotate(180deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+  .wym-logo-y {
+    height: 200px;
+    transition: all 1s;
+    margin-left: -200px;
+    position: absolute; }
 
 .wym-movie-search {
   margin-top: 40px; }

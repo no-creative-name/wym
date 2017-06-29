@@ -5,6 +5,10 @@
   padding: 50px;
 }
 
+.wym-movie-meta {
+  display: flex;
+}
+
 .wym-movie-info-text {
   text-align: left;
   height: $movie-info-height;
@@ -19,7 +23,6 @@
 .wym-movie-info-plot {
   height: 0px;
   opacity: 0;
-  transition: all 1s;
   &-active {
     margin-top: 30px;
     opacity: 100;

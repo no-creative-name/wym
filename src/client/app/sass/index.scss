@@ -5,10 +5,12 @@
 
 body {
   background-color: $body-background-color;
-  padding-bottom: 50px;
+}
+
+.total {
+  min-height: 100%;
 }
 
 .wym-content {
   background-color: $content-background-color;
-  border-radius: 5px;
 }
