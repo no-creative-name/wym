@@ -46,6 +46,8 @@ class App extends React.Component {
 
   render () {
 
+    console.log(this.state.movieSearchValue);
+
     let movieResultsDiv = this.getMovieResults();
 
     let headerClass = "container wym-header";
@@ -79,6 +81,9 @@ class App extends React.Component {
   }
 
   onMovieSearchInput (value) {
+    if(value == "") {
+      this.setState({movieResults: []});
+    }
     this.setState({movieSearchValue: value});
     this.setState({isSearchInProgress: true, isStart: false});
     this.setState({currentMovieData:

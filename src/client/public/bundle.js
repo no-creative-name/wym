@@ -10792,6 +10792,8 @@ var App = function (_React$Component) {
     key: 'render',
     value: function render() {
 
+      console.log(this.state.movieSearchValue);
+
       var movieResultsDiv = this.getMovieResults();
 
       var headerClass = "container wym-header";
@@ -10845,6 +10847,9 @@ var App = function (_React$Component) {
   }, {
     key: 'onMovieSearchInput',
     value: function onMovieSearchInput(value) {
+      if (value == "") {
+        this.setState({ movieResults: [] });
+      }
       this.setState({ movieSearchValue: value });
       this.setState({ isSearchInProgress: true, isStart: false });
       this.setState({ currentMovieData: {
