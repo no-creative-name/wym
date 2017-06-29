@@ -14,7 +14,7 @@ export default class Input extends React.Component {
   }
 
   render () {
-    return <input className="input" value={this.state.value} onChange={this.onChange} onKeyPress={this.onKeyPress} onClick={this.onClick}/>
+    return <input className="input" value={this.state.value} placeholder={this.props.placeholder} onChange={this.onChange} onKeyPress={this.onKeyPress} onClick={this.onClick}/>
   }
 
   onChange (event) {

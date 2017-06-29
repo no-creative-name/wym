@@ -6782,7 +6782,7 @@ var Input = function (_React$Component) {
   _createClass(Input, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('input', { className: 'input', value: this.state.value, onChange: this.onChange, onKeyPress: this.onKeyPress, onClick: this.onClick });
+      return _react2.default.createElement('input', { className: 'input', value: this.state.value, placeholder: this.props.placeholder, onChange: this.onChange, onKeyPress: this.onKeyPress, onClick: this.onClick });
     }
   }, {
     key: 'onChange',
@@ -10166,7 +10166,7 @@ var OnTypeInput = function (_React$Component) {
   _createClass(OnTypeInput, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('input', { className: 'input', value: this.props.value, onChange: this.onChange, onClick: this.onClick });
+      return _react2.default.createElement('input', { className: 'input', value: this.props.value, placeholder: 'Search for a movie...', onChange: this.onChange, onClick: this.onClick });
     }
   }, {
     key: 'onChange',
@@ -10617,9 +10617,9 @@ var TimecodeInput = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (TimecodeInput.__proto__ || Object.getPrototypeOf(TimecodeInput)).call(this, props));
 
 		_this.state = {
-			hours: 'h',
-			minutes: 'm',
-			seconds: 's'
+			hours: '',
+			minutes: '',
+			seconds: ''
 		};
 		//console.log(props);
 		_this.onChangeHours = _this.onChangeHours.bind(_this);
@@ -10637,9 +10637,9 @@ var TimecodeInput = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'wym-time-input' },
-				_react2.default.createElement(_Input2.default, { value: this.state.hours, onChange: this.onChangeHours, onSubmit: this.onSubmit }),
-				_react2.default.createElement(_Input2.default, { value: this.state.minutes, onChange: this.onChangeMinutes, onSubmit: this.onSubmit }),
-				_react2.default.createElement(_Input2.default, { value: this.state.seconds, onChange: this.onChangeSeconds, onSubmit: this.onSubmit }),
+				_react2.default.createElement(_Input2.default, { value: this.state.hours, placeholder: 'h', onChange: this.onChangeHours, onSubmit: this.onSubmit }),
+				_react2.default.createElement(_Input2.default, { value: this.state.minutes, placeholder: 'm', onChange: this.onChangeMinutes, onSubmit: this.onSubmit }),
+				_react2.default.createElement(_Input2.default, { value: this.state.seconds, placeholder: 's', onChange: this.onChangeSeconds, onSubmit: this.onSubmit }),
 				_react2.default.createElement(_Button2.default, { buttonText: 'SEARCH', onClick: this.onSubmit })
 			);
 		}
@@ -10671,10 +10671,10 @@ var TimecodeInput = function (_React$Component) {
 			var minutes = this.state.minutes;
 			var seconds = this.state.seconds;
 
-			if (minutes == 'm') {
+			if (minutes == '') {
 				minutes = '0';
 			}
-			if (seconds == 's') {
+			if (seconds == '') {
 				seconds = '0';
 			}
 

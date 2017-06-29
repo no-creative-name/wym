@@ -7,9 +7,9 @@ export default class TimecodeInput extends React.Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			hours: 'h',
-			minutes: 'm',
-			seconds: 's'
+			hours: '',
+			minutes: '',
+			seconds: ''
 		}
 		//console.log(props);
     this.onChangeHours = this.onChangeHours.bind(this);
@@ -22,9 +22,9 @@ export default class TimecodeInput extends React.Component {
 		let minutesInput = null;
 
 		return <div className="wym-time-input">
-				<Input value={this.state.hours} onChange={this.onChangeHours} onSubmit={this.onSubmit}/>
-				<Input value={this.state.minutes} onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
-				<Input value={this.state.seconds} onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
+				<Input value={this.state.hours} placeholder="h" onChange={this.onChangeHours} onSubmit={this.onSubmit}/>
+				<Input value={this.state.minutes} placeholder="m" onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
+				<Input value={this.state.seconds} placeholder="s" onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
 				<Button buttonText="SEARCH" onClick={this.onSubmit}/>
 		</div>;
 	}
@@ -49,10 +49,10 @@ export default class TimecodeInput extends React.Component {
 		let minutes = this.state.minutes;
 		let seconds = this.state.seconds;
 
-		if(minutes == 'm') {
+		if(minutes == '') {
 			minutes = '0';
 		}
-		if(seconds == 's') {
+		if(seconds == '') {
 			seconds = '0';
 		}
 
