@@ -81,6 +81,22 @@ class App extends React.Component {
   onMovieSearchInput (value) {
     this.setState({movieSearchValue: value});
     this.setState({isSearchInProgress: true, isStart: false});
+    this.setState({currentMovieData:
+      {
+        "key": null,
+        "title":"XXX",
+        "img":"",
+        "duration":10000,
+        "genre":"Generic",
+        "plot":[
+          {
+            "key":"0",
+            "text":"XYZ ",
+            "timecode":3000
+          }
+        ]
+      }
+  });
   }
 
   searchByTitle (searchTerm) {

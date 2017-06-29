@@ -10415,6 +10415,56 @@ module.exports = [
 				"timecode": 12000
 			}
 		]
+	},
+	{
+		"key": 3,
+		"title": "Ghostbusters",
+		"img": "http://netdna.walyou.netdna-cdn.com/wp-content/uploads//2011/10/Ghostbusters-Movie-Poster.jpg",
+		"duration": 14500,
+		"year": 1984,
+		"genre": "Supernatural",
+		"plot": [
+			{
+				"key": "0",
+				"text": "Parapsychologists Peter Venkman, Raymond Stantz, and Egon Spengler are called to the New York Public Library to investigate recent paranormal activity. They encounter the ghost of a dead librarian but are frightened away when she transforms into a horrifying monster. After losing their jobs at Columbia University, the trio establish a paranormal investigation and elimination service known as Ghostbusters. They develop high-tech equipment capable of capturing ghosts and open their business in a disused, run-down firehouse. Egon warns them never to cross the energy streams of their proton pack weapons, as this could cause a catastrophic explosion. They capture their first ghost, Slimer, at a hotel and deposit it in a specially built containment unit in the firehouse basement. As paranormal activity increases in New York City, they hire a fourth member, Winston Zeddemore, to cope with demand. ",
+				"timecode": 1500
+			},
+			{
+				"key": "1",
+				"text": "The Ghostbusters are retained by cellist Dana Barrett, whose apartment is haunted by a demonic spirit, Zuul, a demigod worshipped as a servant to Gozer the Gozerian, a Sumerian shape-shifting god of destruction. ",
+				"timecode": 4500
+			},
+			{
+				"key": "2",
+				"text": "The Ghostbusters are released from custody to combat the supernatural crisis. As they trudge up 22 flights of stairs in Danas building, a romantic encounter between Zuul and Vinz Clortho opens the gate between dimensions and transforms them into supernatural hellhounds. After reaching the roof, the team is unable to prevent the arrival of Gozer, who appears in the form of a woman. Briefly subdued by the team, Gozer disappears, but her voice echoes that the destructor will follow, taking a form chosen by the team. Ray inadvertently recalls a beloved corporate mascot from his childhood—something that could never, ever possibly destroy us— and the destructor arrives in the form of a giant Stay Puft Marshmallow Man and attacks the city. The Ghostbusters cross their proton pack energy streams (reversing the particle flow) and fire them against Gozers portal; the explosion defeats Stay Puft/Gozer and frees Dana and Louis. As thousands of New Yorkers wipe themselves free of marshmallow, the Ghostbusters are welcomed on the street as heroes.",
+				"timecode": 12000
+			}
+		]
+	},
+	{
+		"key": 4,
+		"title": "Gone With The Wind",
+		"img": "http://t3.gstatic.com/images?q=tbn:ANd9GcTseq0r6SRA4KoP__E_MlmffM5RgeFI83YHMxcP5PWfRAlCOMr9",
+		"duration": 34100,
+		"year": 1939,
+		"genre": "Romance",
+		"plot": [
+			{
+				"key": "0",
+				"text": "On the eve of the American Civil War in 1861, Scarlett OHara lives at Tara, her familys cotton plantation in Georgia, with her parents and two sisters. Scarlett learns that Ashley Wilkes, whom she secretly loves, is to be married to his cousin, Melanie Hamilton, and the engagement is to be announced the next day at a barbecue at Ashleys home, the nearby plantation Twelve Oaks. ",
+				"timecode": 1500
+			},
+			{
+				"key": "1",
+				"text": "One day at Franks mill, Scarlett and Ashley are seen embracing by Ashleys sister, India, and harboring an intense dislike of Scarlett she eagerly spreads rumors. Later that evening, Rhett, having heard the rumors, forces Scarlett to attend a birthday party for Ashley; incapable of believing anything bad of her beloved sister-in-law, Melanie stands by Scarletts side so that all know that she believes the gossip to be false. After returning home from the party, Scarlett finds   Rhett downstairs drunk, and they argue about Ashley. Rhett kisses Scarlett against her will, stating his intent to have sex with her that night, and carries the struggling Scarlett to the bedroom. The next day, Rhett apologizes for his behavior and offers Scarlett a divorce, which she rejects, saying that it would be a disgrace. When Rhett returns from an extended trip to London Scarlett informs him that she is pregnant, but an argument ensues which results in her falling down a flight  of stairs and suffering a miscarriage. As she is recovering, tragedy strikes when Bonnie dies while attempting to jump a fence with her pony.  ",
+				"timecode": 4500
+			},
+			{
+				"key": "2",
+				"text": "Scarlett and Rhett visit Melanie, who has suffered complications arising from a new pregnancy, on her deathbed. As Scarlett consoles Ashley, Rhett returns to their home in Atlanta; realizing that Ashley only ever truly loved Melanie, Scarlett dashes after Rhett to find him preparing to leave for good. She pleads with him, telling him she realizes now that she has loved him all along and that she never really loved Ashley, but Rhett says that with Bonnies death went any chance of reconciliation. Scarlett begs him to stay but Rhett rebuffs her and walks out the door and into the early morning fog, leaving her weeping on the staircase and vowing to one day win back his love.",
+				"timecode": 12000
+			}
+		]
 	}
 ];
 
@@ -10797,6 +10847,19 @@ var App = function (_React$Component) {
     value: function onMovieSearchInput(value) {
       this.setState({ movieSearchValue: value });
       this.setState({ isSearchInProgress: true, isStart: false });
+      this.setState({ currentMovieData: {
+          "key": null,
+          "title": "XXX",
+          "img": "",
+          "duration": 10000,
+          "genre": "Generic",
+          "plot": [{
+            "key": "0",
+            "text": "XYZ ",
+            "timecode": 3000
+          }]
+        }
+      });
     }
   }, {
     key: 'searchByTitle',
