@@ -15,6 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isHelpToggled: false,
       isSearchInProgress: false,
       isStart: true,
       movieSearchValue: "",
@@ -37,6 +38,7 @@ class App extends React.Component {
       }
     }
 
+    this.toggleHelp = this.toggleHelp.bind(this);
     this.onMovieSearchInput = this.onMovieSearchInput.bind(this);
     this.searchByTitle = this.searchByTitle.bind(this);
     this.selectMovie = this.selectMovie.bind(this);
@@ -50,6 +52,13 @@ class App extends React.Component {
 
     let movieResultsDiv = this.getMovieResults();
 
+    let topHeaderClass = "wym-top-header";
+    let topHeaderText = "What is WYM?";
+    if (this.state.isHelpToggled) {
+      topHeaderClass+=" helpToggled";
+      topHeaderText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+    }
+
     let headerClass = "container wym-header";
     if (this.state.isStart) {
       headerClass+=" onstart";
@@ -61,6 +70,9 @@ class App extends React.Component {
     }
 
     return <div className="total" onKeyDown={this.onKeyDown}>
+      <div onClick={this.toggleHelp} className="wym-top-header">
+        {topHeaderText}
+      </div>
       <div className={headerClass}>
         <Logo className="wym-header-logo"></Logo>
         <div className="wym-movie-search">
@@ -78,6 +90,15 @@ class App extends React.Component {
       </div>
     </div>;
 
+  }
+
+  toggleHelp () {
+    if(!this.state.isHelpToggled) {
+      this.setState({isHelpToggled: true});
+    }
+    else {
+      this.setState({isHelpToggled: false});
+    }
   }
 
   onMovieSearchInput (value) {

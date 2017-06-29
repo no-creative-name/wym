@@ -1,5 +1,27 @@
 @import 'variables/colors';
 
+.wym-top-header {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  background-color: $content-background-color;
+  border-radius: 2px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  user-select: none;
+  padding: 10px;
+  cursor: default;
+  a {
+    color: $body-background-color;
+  }
+}
+
+.helpToggled {
+}
+
 .wym-header {
   padding-top: 40px;
   padding-bottom: 40px;

@@ -10760,6 +10760,7 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
+      isHelpToggled: false,
       isSearchInProgress: false,
       isStart: true,
       movieSearchValue: "",
@@ -10780,6 +10781,7 @@ var App = function (_React$Component) {
       }
     };
 
+    _this.toggleHelp = _this.toggleHelp.bind(_this);
     _this.onMovieSearchInput = _this.onMovieSearchInput.bind(_this);
     _this.searchByTitle = _this.searchByTitle.bind(_this);
     _this.selectMovie = _this.selectMovie.bind(_this);
@@ -10796,6 +10798,13 @@ var App = function (_React$Component) {
 
       var movieResultsDiv = this.getMovieResults();
 
+      var topHeaderClass = "wym-top-header";
+      var topHeaderText = "What is WYM?";
+      if (this.state.isHelpToggled) {
+        topHeaderClass += " helpToggled";
+        topHeaderText = "WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+      }
+
       var headerClass = "container wym-header";
       if (this.state.isStart) {
         headerClass += " onstart";
@@ -10809,6 +10818,11 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'total', onKeyDown: this.onKeyDown },
+        _react2.default.createElement(
+          'div',
+          { onClick: this.toggleHelp, className: 'wym-top-header' },
+          topHeaderText
+        ),
         _react2.default.createElement(
           'div',
           { className: headerClass },
@@ -10843,6 +10857,15 @@ var App = function (_React$Component) {
           _react2.default.createElement(_MovieInfo2.default, { movie: this.state.currentMovieData })
         )
       );
+    }
+  }, {
+    key: 'toggleHelp',
+    value: function toggleHelp() {
+      if (!this.state.isHelpToggled) {
+        this.setState({ isHelpToggled: true });
+      } else {
+        this.setState({ isHelpToggled: false });
+      }
     }
   }, {
     key: 'onMovieSearchInput',
@@ -12877,7 +12900,7 @@ exports = module.exports = __webpack_require__(55)(undefined);
 
 
 // module
-exports.push([module.i, ".wym-header {\n  padding-top: 40px;\n  padding-bottom: 40px;\n  text-align: center;\n  transition: all 1s; }\n  .wym-header input {\n    font-size: 2em;\n    padding-left: 50px;\n    height: 50px;\n    width: 600px; }\n\n.onstart {\n  padding-top: 150px; }\n  .onstart img {\n    height: 300px; }\n  .onstart .wym-logo-y {\n    margin-left: -300px; }\n\n.wym-logo {\n  height: 200px;\n  transition: all 1s;\n  -webkit-animation: 2s spin 1s 1 ease-in-out; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  40% {\n    -webkit-transform: rotate(180deg); }\n  60% {\n    -webkit-transform: rotate(180deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n  .wym-logo-y {\n    height: 200px;\n    transition: all 1s;\n    margin-left: -200px;\n    position: absolute; }\n\n.wym-movie-search {\n  margin-top: 40px; }\n\n.wym-movie-search-icon {\n  color: #e3e3e3;\n  position: absolute;\n  z-index: 1;\n  margin-left: 5px;\n  font-family: 'Material Icons';\n  font-size: 40px;\n  line-height: 1.2;\n  margin-right: 40px;\n  transition: all 1s; }\n  .wym-movie-search-icon-active {\n    color: #2b2b2b;\n    position: absolute;\n    z-index: 1;\n    margin-left: 5px;\n    font-family: 'Material Icons';\n    font-size: 40px;\n    line-height: 1.2;\n    margin-right: 40px;\n    transition: all 1s; }\n\n.wym-results {\n  background-color: white;\n  position: relative;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  cursor: pointer;\n  width: 600px; }\n  .wym-results .wym-search-result:hover {\n    background-color: #e3e3e3;\n    transition: background-color 0.3s; }\n  .wym-results .wym-search-result-image {\n    width: 100px; }\n  .wym-results .wym-search-result-text {\n    vertical-align: middle;\n    color: black; }\n\n.active {\n  background-color: #e3e3e3; }\n\n@media only screen and (max-width: 768px) {\n  .wym-search-result-text {\n    font-size: 1.5em; } }\n\n.wym-movie-info {\n  padding: 50px; }\n\n.wym-movie-meta {\n  display: flex; }\n\n.wym-movie-info-text {\n  text-align: left;\n  height: 250px;\n  padding-left: 50px;\n  margin-bottom: 40px; }\n\n.wym-plotbuilder {\n  margin-top: 30px; }\n\n.wym-movie-info-plot {\n  height: 0px;\n  opacity: 0; }\n  .wym-movie-info-plot-active {\n    margin-top: 30px;\n    opacity: 100; }\n\n.wym-movieposter {\n  height: 250px; }\n  .wym-movieposter--small {\n    height: 100px; }\n\n.wym-title {\n  font-size: 25pt; }\n\n.wym-subtitle {\n  font-size: 16pt; }\n\n.wym-time-input input {\n  width: 50px;\n  margin-right: 5px; }\n\nbody {\n  background-color: #2b2b2b; }\n\n.total {\n  min-height: 100%; }\n\n.wym-content {\n  background-color: white; }\n", ""]);
+exports.push([module.i, ".wym-top-header {\n  position: absolute;\n  text-align: center;\n  width: 100%;\n  background-color: white;\n  border-radius: 2px;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  user-select: none;\n  padding: 10px;\n  cursor: default; }\n  .wym-top-header a {\n    color: #2b2b2b; }\n\n.wym-header {\n  padding-top: 40px;\n  padding-bottom: 40px;\n  text-align: center;\n  transition: all 1s; }\n  .wym-header input {\n    font-size: 2em;\n    padding-left: 50px;\n    height: 50px;\n    width: 600px; }\n\n.onstart {\n  padding-top: 150px; }\n  .onstart img {\n    height: 300px; }\n  .onstart .wym-logo-y {\n    margin-left: -300px; }\n\n.wym-logo {\n  height: 200px;\n  transition: all 1s;\n  -webkit-animation: 2s spin 1s 1 ease-in-out; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  40% {\n    -webkit-transform: rotate(180deg); }\n  60% {\n    -webkit-transform: rotate(180deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n  .wym-logo-y {\n    height: 200px;\n    transition: all 1s;\n    margin-left: -200px;\n    position: absolute; }\n\n.wym-movie-search {\n  margin-top: 40px; }\n\n.wym-movie-search-icon {\n  color: #e3e3e3;\n  position: absolute;\n  z-index: 1;\n  margin-left: 5px;\n  font-family: 'Material Icons';\n  font-size: 40px;\n  line-height: 1.2;\n  margin-right: 40px;\n  transition: all 1s; }\n  .wym-movie-search-icon-active {\n    color: #2b2b2b;\n    position: absolute;\n    z-index: 1;\n    margin-left: 5px;\n    font-family: 'Material Icons';\n    font-size: 40px;\n    line-height: 1.2;\n    margin-right: 40px;\n    transition: all 1s; }\n\n.wym-results {\n  background-color: white;\n  position: relative;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  cursor: pointer;\n  width: 600px; }\n  .wym-results .wym-search-result:hover {\n    background-color: #e3e3e3;\n    transition: background-color 0.3s; }\n  .wym-results .wym-search-result-image {\n    width: 100px; }\n  .wym-results .wym-search-result-text {\n    vertical-align: middle;\n    color: black; }\n\n.active {\n  background-color: #e3e3e3; }\n\n@media only screen and (max-width: 768px) {\n  .wym-search-result-text {\n    font-size: 1.5em; } }\n\n.wym-movie-info {\n  padding: 50px; }\n\n.wym-movie-meta {\n  display: flex; }\n\n.wym-movie-info-text {\n  text-align: left;\n  height: 250px;\n  padding-left: 50px;\n  margin-bottom: 40px; }\n\n.wym-plotbuilder {\n  margin-top: 30px; }\n\n.wym-movie-info-plot {\n  height: 0px;\n  opacity: 0; }\n  .wym-movie-info-plot-active {\n    margin-top: 30px;\n    opacity: 100; }\n\n.wym-movieposter {\n  height: 250px; }\n  .wym-movieposter--small {\n    height: 100px; }\n\n.wym-title {\n  font-size: 25pt; }\n\n.wym-subtitle {\n  font-size: 16pt; }\n\n.wym-time-input input {\n  width: 50px;\n  margin-right: 5px; }\n\nbody {\n  background-color: #2b2b2b; }\n\n.total {\n  min-height: 100%; }\n\n.wym-content {\n  background-color: white; }\n", ""]);
 
 // exports
 
