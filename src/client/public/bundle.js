@@ -10244,6 +10244,7 @@ var SearchResult = function (_React$Component) {
   _createClass(SearchResult, [{
     key: 'onClick',
     value: function onClick() {
+      console.log("true colors");
       if (this.props.onSubmit) {
         this.props.onSubmit(this.props.resultNumber);
       }
@@ -10714,6 +10715,10 @@ var _AboutBox = __webpack_require__(199);
 
 var _AboutBox2 = _interopRequireDefault(_AboutBox);
 
+var _SearchArea = __webpack_require__(200);
+
+var _SearchArea2 = _interopRequireDefault(_SearchArea);
+
 var _Logo = __webpack_require__(84);
 
 var _Logo2 = _interopRequireDefault(_Logo);
@@ -10729,14 +10734,6 @@ var _Input2 = _interopRequireDefault(_Input);
 var _MovieInfo = __webpack_require__(85);
 
 var _MovieInfo2 = _interopRequireDefault(_MovieInfo);
-
-var _movieTest = __webpack_require__(90);
-
-var _movieTest2 = _interopRequireDefault(_movieTest);
-
-var _SearchResult = __webpack_require__(87);
-
-var _SearchResult2 = _interopRequireDefault(_SearchResult);
 
 __webpack_require__(88);
 
@@ -10760,7 +10757,6 @@ var App = function (_React$Component) {
 
     _this.state = {
       isSearchInProgress: false,
-      isStart: true,
       movieSearchValue: "",
       movieResults: [],
       movieResultHovered: 0,
@@ -10778,39 +10774,15 @@ var App = function (_React$Component) {
         }]
       }
     };
-    _this.onMovieSearchInput = _this.onMovieSearchInput.bind(_this);
-    _this.searchByTitle = _this.searchByTitle.bind(_this);
+    _this.getMovieResults = _this.getMovieResults.bind(_this);
     _this.selectMovie = _this.selectMovie.bind(_this);
-    _this.onKeyDown = _this.onKeyDown.bind(_this);
 
     return _this;
   }
 
   _createClass(App, [{
-    key: 'onMovieSearchInput',
-    value: function onMovieSearchInput(value) {
-      if (value == "") {
-        this.setState({ movieResults: [] });
-      }
-      this.setState({ movieSearchValue: value });
-      this.setState({ isSearchInProgress: true, isStart: false });
-    }
-  }, {
-    key: 'searchByTitle',
-    value: function searchByTitle(searchTerm) {
-
-      var movieResults = [];
-      var movieResultCounter = 0;
-
-      this.setState({ movieResultHovered: -1 });
-      _movieTest2.default.filter(function (movie) {
-        if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-          movieResults.push(movie);
-          movieResultCounter++;
-        };
-      });
-
-      this.setState({ numberOfMovieResults: movieResultCounter });
+    key: 'getMovieResults',
+    value: function getMovieResults(movieResults) {
       this.setState({ movieResults: movieResults });
     }
   }, {
@@ -10821,79 +10793,14 @@ var App = function (_React$Component) {
       this.setState({ isSearchInProgress: false });
     }
   }, {
-    key: 'getMovieResults',
-    value: function getMovieResults() {
-
-      var movieResults = [];
-
-      if (this.state.isSearchInProgress) {
-        for (var i = 0; i < this.state.movieResults.length; i++) {
-          if (this.state.movieResultHovered == i) {
-            movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'true', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
-          } else {
-            movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'false', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
-          }
-        }
-      }
-      return movieResults;
-    }
-  }, {
-    key: 'onKeyDown',
-    value: function onKeyDown(event) {
-
-      if (event.keyCode == 40) {
-        if (this.state.movieResultHovered < this.state.numberOfMovieResults - 1) {
-          var movieResultHovered = this.state.movieResultHovered + 1;
-          this.setState({ movieResultHovered: movieResultHovered });
-        }
-      }
-      if (event.keyCode == 38) {
-        if (this.state.movieResultHovered > 0) {
-          var _movieResultHovered = this.state.movieResultHovered - 1;
-          this.setState({ movieResultHovered: _movieResultHovered });
-        }
-      }
-      if (event.keyCode == 13) {
-        this.setState({ isSearchInProgress: false });
-        this.selectMovie(this.state.movieResultHovered);
-      }
-    }
-  }, {
     key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
         'div',
-        { className: 'total', onKeyDown: this.onKeyDown },
+        { className: 'total' },
         _react2.default.createElement(_AboutBox2.default, null),
-        _react2.default.createElement(
-          'div',
-          { className: headerClass },
-          _react2.default.createElement(_Logo2.default, { className: 'wym-header-logo' }),
-          _react2.default.createElement(
-            'div',
-            { className: 'wym-movie-search' },
-            _react2.default.createElement(
-              'span',
-              { className: searchIconClass },
-              'search'
-            ),
-            _react2.default.createElement(
-              _OnTypeInput2.default,
-              { value: this.state.movieSearchValue, onChange: this.onMovieSearchInput, onSubmit: this.searchByTitle },
-              'search'
-            ),
-            _react2.default.createElement(
-              'table',
-              { className: 'table is-narrow wym-results' },
-              _react2.default.createElement(
-                'tfoot',
-                null,
-                movieResultsDiv
-              )
-            )
-          )
-        ),
+        _react2.default.createElement(_SearchArea2.default, { getMovieResults: this.getMovieResults, selectMovie: this.selectMovie }),
         _react2.default.createElement(
           'div',
           { className: 'wym-content' },
@@ -25382,6 +25289,202 @@ var AboutBox = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = AboutBox;
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(13);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Logo = __webpack_require__(84);
+
+var _Logo2 = _interopRequireDefault(_Logo);
+
+var _OnTypeInput = __webpack_require__(86);
+
+var _OnTypeInput2 = _interopRequireDefault(_OnTypeInput);
+
+var _movieTest = __webpack_require__(90);
+
+var _movieTest2 = _interopRequireDefault(_movieTest);
+
+var _SearchResult = __webpack_require__(87);
+
+var _SearchResult2 = _interopRequireDefault(_SearchResult);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SearchArea = function (_React$Component) {
+    _inherits(SearchArea, _React$Component);
+
+    function SearchArea(props) {
+        _classCallCheck(this, SearchArea);
+
+        var _this = _possibleConstructorReturn(this, (SearchArea.__proto__ || Object.getPrototypeOf(SearchArea)).call(this, props));
+
+        _this.state = {
+            isSearchInProgress: false,
+            isStart: true,
+            movieSearchValue: "",
+            movieResults: [],
+            movieResultHovered: 0,
+            numberOfMovieResults: 0,
+            currentMovieData: {
+                "key": null,
+                "title": "XXX",
+                "img": "",
+                "duration": 10000,
+                "genre": "Generic",
+                "plot": [{
+                    "key": "0",
+                    "text": "XYZ ",
+                    "timecode": 3000
+                }]
+            }
+        };
+
+        _this.onMovieSearchInput = _this.onInput.bind(_this);
+        _this.searchByTitle = _this.getMoviesBySearchTerm.bind(_this);
+        _this.getMovieResults = _this.getArrayOfSearchResults.bind(_this);
+        _this.onKeyDown = _this.onKeyDown.bind(_this);
+        return _this;
+    }
+
+    _createClass(SearchArea, [{
+        key: 'onInput',
+        value: function onInput(value) {
+            if (value == "") {
+                this.setState({ movieResults: [] });
+            }
+            this.setState({ movieSearchValue: value });
+            this.setState({ isSearchInProgress: true, isStart: false });
+        }
+    }, {
+        key: 'getMoviesBySearchTerm',
+        value: function getMoviesBySearchTerm(searchTerm) {
+
+            var movieResults = [];
+            var movieResultCounter = 0;
+
+            this.setState({ movieResultHovered: -1 });
+            _movieTest2.default.filter(function (movie) {
+                if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    movieResults.push(movie);
+                    movieResultCounter++;
+                };
+            });
+
+            this.setState({ numberOfMovieResults: movieResultCounter });
+            this.setState({ movieResults: movieResults });
+
+            this.props.getMovieResults(movieResults);
+        }
+    }, {
+        key: 'getArrayOfSearchResults',
+        value: function getArrayOfSearchResults() {
+
+            var movieResults = [];
+
+            if (this.state.isSearchInProgress) {
+                for (var i = 0; i < this.state.movieResults.length; i++) {
+                    if (this.state.movieResultHovered == i) {
+                        movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'true', movieResult: this.state.movieResults[i], onSubmit: this.props.selectMovie }));
+                    } else {
+                        movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'false', movieResult: this.state.movieResults[i], onSubmit: this.props.selectMovie }));
+                    }
+                }
+            }
+            return movieResults;
+        }
+    }, {
+        key: 'onKeyDown',
+        value: function onKeyDown(event) {
+
+            if (event.keyCode == 40) {
+                if (this.state.movieResultHovered < this.state.numberOfMovieResults - 1) {
+                    var movieResultHovered = this.state.movieResultHovered + 1;
+                    this.setState({ movieResultHovered: movieResultHovered });
+                }
+            }
+            if (event.keyCode == 38) {
+                if (this.state.movieResultHovered > 0) {
+                    var _movieResultHovered = this.state.movieResultHovered - 1;
+                    this.setState({ movieResultHovered: _movieResultHovered });
+                }
+            }
+            if (event.keyCode == 13) {
+                this.setState({ isSearchInProgress: false });
+                this.props.selectMovie(this.state.movieResultHovered);
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            var movieResultsDiv = this.getArrayOfSearchResults();
+
+            var headerClass = "container wym-header";
+            if (this.state.isStart) {
+                headerClass += " onstart";
+            }
+
+            var searchIconClass = "wym-movie-search-icon";
+            if (this.state.isSearchInProgress) {
+                searchIconClass += "-active";
+            }
+
+            return _react2.default.createElement(
+                'div',
+                { className: headerClass, onKeyDown: this.onKeyDown },
+                _react2.default.createElement(_Logo2.default, { className: 'wym-header-logo' }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'wym-movie-search' },
+                    _react2.default.createElement(
+                        'span',
+                        { className: searchIconClass },
+                        'search'
+                    ),
+                    _react2.default.createElement(
+                        _OnTypeInput2.default,
+                        { value: this.state.movieSearchValue, onChange: this.onInput, onSubmit: this.getMoviesBySearchTerm },
+                        'search'
+                    ),
+                    _react2.default.createElement(
+                        'table',
+                        { className: 'table is-narrow wym-results' },
+                        _react2.default.createElement(
+                            'tfoot',
+                            null,
+                            movieResultsDiv
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return SearchArea;
+}(_react2.default.Component);
+
+exports.default = SearchArea;
 
 /***/ })
 /******/ ]);

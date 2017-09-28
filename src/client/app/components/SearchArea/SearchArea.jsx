@@ -1,6 +1,8 @@
 import React from 'react';
-import Logo from './components/Logo/Logo.jsx';
-import OnTypeInput from './components/OnTypeInput/OnTypeInput.jsx';
+import Logo from '../Logo/Logo.jsx';
+import OnTypeInput from '../OnTypeInput/OnTypeInput.jsx';
+import TestMovieData from '../../../../data/movieTest.json';
+import SearchResult from '../SearchResult/SearchResult.jsx';
 
 export default class SearchArea extends React.Component {
 
@@ -28,9 +30,14 @@ export default class SearchArea extends React.Component {
                 ]
             }
         }
+
+        this.onMovieSearchInput = this.onInput.bind(this);
+        this.searchByTitle = this.getMoviesBySearchTerm.bind(this);
+        this.getMovieResults = this.getArrayOfSearchResults.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);  
     }
 
-    onMovieSearchInput (value) {
+    onInput (value) {
         if(value == "") {
             this.setState({movieResults: []});
         }
@@ -38,7 +45,7 @@ export default class SearchArea extends React.Component {
         this.setState({isSearchInProgress: true, isStart: false});
     }
 
-    searchByTitle (searchTerm) {
+    getMoviesBySearchTerm (searchTerm) {
 
         let movieResults = [];
         let movieResultCounter = 0;
@@ -56,28 +63,50 @@ export default class SearchArea extends React.Component {
         this.setState({numberOfMovieResults: movieResultCounter});
         this.setState({movieResults: movieResults});
 
+        this.props.getMovieResults(movieResults);
+
     }
 
-    getMovieResults () {
+    getArrayOfSearchResults () {
 
         let movieResults = [];
 
         if(this.state.isSearchInProgress) {
             for (let i = 0; i < this.state.movieResults.length; i++) {
                 if(this.state.movieResultHovered == i) {
-                    movieResults.push(<SearchResult key={i} resultNumber={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
+                    movieResults.push(<SearchResult key={i} resultNumber={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.props.selectMovie}></SearchResult>);
                 }
                 else {
-                    movieResults.push(<SearchResult key={i} resultNumber={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
+                    movieResults.push(<SearchResult key={i} resultNumber={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.props.selectMovie}></SearchResult>);
                 }
             }
         }
         return movieResults;
     }
+    
+    onKeyDown(event) {
 
+        if(event.keyCode == 40) {
+            if(this.state.movieResultHovered < this.state.numberOfMovieResults-1) {
+                let movieResultHovered = this.state.movieResultHovered+1;
+                this.setState({movieResultHovered: movieResultHovered});
+            }
+        }
+        if(event.keyCode == 38) {
+            if(this.state.movieResultHovered > 0) {
+                let movieResultHovered = this.state.movieResultHovered-1;
+                this.setState({movieResultHovered: movieResultHovered});
+            }
+        }
+        if(event.keyCode == 13) {
+            this.setState({isSearchInProgress: false});
+            this.props.selectMovie(this.state.movieResultHovered);
+        }
+    }
+    
     render() {
 
-        let movieResultsDiv = this.getMovieResults();
+        let movieResultsDiv = this.getArrayOfSearchResults();
 
         let headerClass = "container wym-header";
         if (this.state.isStart) {
@@ -90,11 +119,11 @@ export default class SearchArea extends React.Component {
         }
 
         return (
-            <div className={headerClass}>
+            <div className={headerClass} onKeyDown={this.onKeyDown}>
                 <Logo className="wym-header-logo"></Logo>
                 <div className="wym-movie-search">
                 <span className={searchIconClass}>search</span>
-                <OnTypeInput value={this.state.movieSearchValue} onChange={this.onMovieSearchInput} onSubmit={this.searchByTitle}>search</OnTypeInput>
+                <OnTypeInput value={this.state.movieSearchValue} onChange={this.onInput} onSubmit={this.getMoviesBySearchTerm}>search</OnTypeInput>
                 <table className="table is-narrow wym-results">
                     <tfoot>
                     {movieResultsDiv}

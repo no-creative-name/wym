@@ -11,6 +11,7 @@ export default class SearchResult extends React.Component {
   }
 
   onClick () {
+    console.log("true colors");
     if(this.props.onSubmit) {
       this.props.onSubmit(this.props.resultNumber);
     }
