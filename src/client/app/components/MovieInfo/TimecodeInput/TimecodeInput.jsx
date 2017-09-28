@@ -11,36 +11,20 @@ export default class TimecodeInput extends React.Component {
 			minutes: '',
 			seconds: ''
 		}
-		//console.log(props);
-    this.onChangeHours = this.onChangeHours.bind(this);
-    this.onChangeMinutes = this.onChangeMinutes.bind(this);
-    this.onChangeSeconds = this.onChangeSeconds.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-	}
-
-	render () {
-		let minutesInput = null;
-
-		return <div className="wym-time-input">
-				<Input value={this.state.hours} placeholder="h" onChange={this.onChangeHours} onSubmit={this.onSubmit}/>
-				<Input value={this.state.minutes} placeholder="m" onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
-				<Input value={this.state.seconds} placeholder="s" onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
-				<Button buttonText="SEARCH" onClick={this.onSubmit}/>
-		</div>;
+		this.onChangeHours = this.onChangeHours.bind(this);
+		this.onChangeMinutes = this.onChangeMinutes.bind(this);
+		this.onChangeSeconds = this.onChangeSeconds.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	onChangeHours (value) {
-			this.setState({hours: value});
+		this.setState({hours: value});
 	}
 	onChangeMinutes (value) {
-			this.setState({minutes: value});
+		this.setState({minutes: value});
 	}
 	onChangeSeconds (value) {
-			this.setState({seconds: value});
-	}
-
-	focusNextField (nextField) {
-		this.refs[nextField].focus(nextField);
+		this.setState({seconds: value});	
 	}
 
 	onSubmit () {
@@ -70,6 +54,17 @@ export default class TimecodeInput extends React.Component {
 		if(this.props.onSubmit) {
 			this.props.onSubmit(timecode);
 		}
+	}
+
+	render () {
+		let minutesInput = null;
+
+		return <div className="wym-time-input">
+				<Input value={this.state.hours} placeholder="h" onChange={this.onChangeHours} onSubmit={this.onSubmit}/>
+				<Input value={this.state.minutes} placeholder="m" onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
+				<Input value={this.state.seconds} placeholder="s" onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
+				<Button buttonText="SEARCH" onClick={this.onSubmit}/>
+		</div>;
 	}
 
 

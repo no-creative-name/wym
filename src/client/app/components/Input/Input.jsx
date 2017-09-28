@@ -13,10 +13,6 @@ export default class Input extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  render () {
-    return <input className="input" value={this.state.value} placeholder={this.props.placeholder} onChange={this.onChange} onKeyPress={this.onKeyPress} onClick={this.onClick}/>
-  }
-
   onChange (event) {
 		this.setState({value: event.target.value});
     if(this.props.onChange) {
@@ -43,5 +39,9 @@ export default class Input extends React.Component {
       this.props.onSubmit(value);
       }
     }
+  }
+
+  render () {
+    return <input className="input" value={this.state.value} placeholder={this.props.placeholder} onChange={this.onChange} onKeyPress={this.onKeyPress} onClick={this.onClick}/>
   }
 }

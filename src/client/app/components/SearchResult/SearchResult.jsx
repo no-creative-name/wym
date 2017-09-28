@@ -10,6 +10,12 @@ export default class SearchResult extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  onClick () {
+    if(this.props.onSubmit) {
+      this.props.onSubmit(this.props.resultNumber);
+    }
+  }
+
   render () {
 
     let resultClass = "wym-search-result";
@@ -25,12 +31,6 @@ export default class SearchResult extends React.Component {
       <td className="wym-search-result-text">{this.props.movieResult.title}</td>
       <td className="wym-search-result-text">{this.props.movieResult.year}</td>
     </tr>
-  }
-
-  onClick () {
-    if(this.props.onSubmit) {
-      this.props.onSubmit(this.props.resultNumber);
-    }
   }
 
 }

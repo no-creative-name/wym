@@ -12,10 +12,6 @@ export default class OnTypeInput extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  render () {
-    return <input className="input" value={this.props.value} placeholder="Search for a movie..." onChange={this.onChange} onClick={this.onClick} />
-  }
-
   onChange (event) {
 		this.setState({value: event.target.value});
 		this.onSubmit(event.target.value);
@@ -38,6 +34,10 @@ export default class OnTypeInput extends React.Component {
         this.props.onSubmit(value);
       }
     }
+  }
+
+  render () {
+    return <input className="input" value={this.props.value} placeholder="Search for a movie..." onChange={this.onChange} onClick={this.onClick} />
   }
 
 }

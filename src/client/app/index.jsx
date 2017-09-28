@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import AboutBox from './components/AboutBox/AboutBox.jsx';
 import Logo from './components/Logo/Logo.jsx';
 import OnTypeInput from './components/OnTypeInput/OnTypeInput.jsx';
 import Input from './components/Input/Input.jsx';
@@ -15,7 +16,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isHelpToggled: false,
       isSearchInProgress: false,
       isStart: true,
       movieSearchValue: "",
@@ -37,68 +37,11 @@ class App extends React.Component {
         ]
       }
     }
-
-    this.toggleHelp = this.toggleHelp.bind(this);
     this.onMovieSearchInput = this.onMovieSearchInput.bind(this);
     this.searchByTitle = this.searchByTitle.bind(this);
     this.selectMovie = this.selectMovie.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
 
-  }
-
-  render () {
-
-    console.log(this.state.movieSearchValue);
-
-    let movieResultsDiv = this.getMovieResults();
-
-    let topHeaderClass = "wym-top-header";
-    let topHeaderText = "What is WYM?";
-    if (this.state.isHelpToggled) {
-      topHeaderClass+=" helpToggled";
-      topHeaderText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
-    }
-
-    let headerClass = "container wym-header";
-    if (this.state.isStart) {
-      headerClass+=" onstart";
-    }
-
-    let searchIconClass = "wym-movie-search-icon";
-    if (this.state.isSearchInProgress) {
-      searchIconClass+="-active";
-    }
-
-    return <div className="total" onKeyDown={this.onKeyDown}>
-      <div onClick={this.toggleHelp} className="wym-top-header">
-        {topHeaderText}
-      </div>
-      <div className={headerClass}>
-        <Logo className="wym-header-logo"></Logo>
-        <div className="wym-movie-search">
-          <span className={searchIconClass}>search</span>
-          <OnTypeInput value={this.state.movieSearchValue} onChange={this.onMovieSearchInput} onSubmit={this.searchByTitle}>search</OnTypeInput>
-          <table className="table is-narrow wym-results">
-            <tfoot>
-              {movieResultsDiv}
-            </tfoot>
-          </table>
-        </div>
-      </div>
-      <div className="wym-content">
-        <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
-      </div>
-    </div>;
-
-  }
-
-  toggleHelp () {
-    if(!this.state.isHelpToggled) {
-      this.setState({isHelpToggled: true});
-    }
-    else {
-      this.setState({isHelpToggled: false});
-    }
   }
 
   onMovieSearchInput (value) {
@@ -107,22 +50,6 @@ class App extends React.Component {
     }
     this.setState({movieSearchValue: value});
     this.setState({isSearchInProgress: true, isStart: false});
-    this.setState({currentMovieData:
-      {
-        "key": null,
-        "title":"XXX",
-        "img":"",
-        "duration":10000,
-        "genre":"Generic",
-        "plot":[
-          {
-            "key":"0",
-            "text":"XYZ ",
-            "timecode":3000
-          }
-        ]
-      }
-  });
   }
 
   searchByTitle (searchTerm) {
@@ -186,6 +113,29 @@ class App extends React.Component {
       this.setState({isSearchInProgress: false});
       this.selectMovie(this.state.movieResultHovered);
     }
+  }
+
+  render () {
+
+    return <div className="total" onKeyDown={this.onKeyDown}>
+      <AboutBox />
+      <div className={headerClass}>
+        <Logo className="wym-header-logo"></Logo>
+        <div className="wym-movie-search">
+          <span className={searchIconClass}>search</span>
+          <OnTypeInput value={this.state.movieSearchValue} onChange={this.onMovieSearchInput} onSubmit={this.searchByTitle}>search</OnTypeInput>
+          <table className="table is-narrow wym-results">
+            <tfoot>
+              {movieResultsDiv}
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div className="wym-content">
+        <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
+      </div>
+    </div>;
+
   }
 
 }
