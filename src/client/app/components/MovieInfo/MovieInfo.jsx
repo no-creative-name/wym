@@ -12,13 +12,12 @@ export default class MovieInfo extends React.Component {
       fullplot: ''
     }
     this.buildPlot = this.buildPlot.bind(this);
-    this.convertTimecode = this.convertTimecode.bind(this);
+    this.convertTimecodeToHMS = this.convertTimecodeToHMS.bind(this);
   }
 
   buildPlot (inputTimecode) {
 
     this.setState({fullplot:''});
-    console.log(inputTimecode);
 
     let plots = [];
 
@@ -38,7 +37,7 @@ export default class MovieInfo extends React.Component {
 
   }
 
-  convertTimecode (timecode) {
+  convertTimecodeToHMS (timecode) {
 
       let hours = ""+Math.floor((timecode / 10000) % 10) + " h, ";
       let minutes = ""+Math.floor((timecode / 1000) % 10)+Math.floor((timecode / 100) % 10)+" m, ";
@@ -64,7 +63,7 @@ export default class MovieInfo extends React.Component {
           <MoviePoster className="column is-4" imageSource={this.props.movie.img}></MoviePoster>
           <div className="column is-8 wym-movie-info-text">
             <div className="wym-title">{this.props.movie.title}</div>
-            <div className="wym-subtitle">{this.convertTimecode(this.props.movie.duration)}</div>
+            <div className="wym-subtitle">{this.convertTimecodeToHMS(this.props.movie.duration)}</div>
             <div className="wym-subtitle">{this.props.movie.year}</div>
             <div className="wym-subtitle">{this.props.movie.genre}</div>
           </div>

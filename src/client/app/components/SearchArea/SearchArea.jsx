@@ -10,12 +10,12 @@ export default class SearchArea extends React.Component {
         super(props);
         this.state = {
             isSearchInProgress: false,
-            isStart: true,
+            isInInitialState: true,
             movieSearchValue: "",
+            countOfMovieResults: 0,
             movieResults: [],
-            movieResultHovered: 0,
-            numberOfMovieResults: 0,
-            currentMovieData: {
+            numberOFMovieResultHovered: 0,
+            selectedMovieData: {
                 "key": null,
                 "title":"XXX",
                 "img":"",
@@ -31,9 +31,10 @@ export default class SearchArea extends React.Component {
             }
         }
 
-        this.onMovieSearchInput = this.onInput.bind(this);
-        this.searchByTitle = this.getMoviesBySearchTerm.bind(this);
-        this.getMovieResults = this.getArrayOfSearchResults.bind(this);
+        this.onInput = this.onInput.bind(this);
+        this.getMoviesBySearchTerm = this.getMoviesBySearchTerm.bind(this);
+        this.getArrayOfSearchResults = this.getArrayOfSearchResults.bind(this);
+        this.selectMovie = this.selectMovie.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);  
     }
 
@@ -42,7 +43,7 @@ export default class SearchArea extends React.Component {
             this.setState({movieResults: []});
         }
         this.setState({movieSearchValue: value});
-        this.setState({isSearchInProgress: true, isStart: false});
+        this.setState({isSearchInProgress: true, isInInitialState: false});
     }
 
     getMoviesBySearchTerm (searchTerm) {
@@ -50,21 +51,18 @@ export default class SearchArea extends React.Component {
         let movieResults = [];
         let movieResultCounter = 0;
 
-        this.setState({movieResultHovered: -1});
-            TestMovieData.filter(
-                function(movie) {
-                    if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())){
-                    movieResults.push(movie);
-                    movieResultCounter++;
-                    };
+        this.setState({numberOFMovieResultHovered: -1});
+        TestMovieData.filter(
+            function(movie) {
+                if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())){
+                movieResults.push(movie);
+                movieResultCounter++;
+                };
             }
         )
 
-        this.setState({numberOfMovieResults: movieResultCounter});
+        this.setState({countOfMovieResults: movieResultCounter});
         this.setState({movieResults: movieResults});
-
-        this.props.getMovieResults(movieResults);
-
     }
 
     getArrayOfSearchResults () {
@@ -73,34 +71,40 @@ export default class SearchArea extends React.Component {
 
         if(this.state.isSearchInProgress) {
             for (let i = 0; i < this.state.movieResults.length; i++) {
-                if(this.state.movieResultHovered == i) {
-                    movieResults.push(<SearchResult key={i} resultNumber={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.props.selectMovie}></SearchResult>);
+                if(this.state.numberOFMovieResultHovered == i) {
+                    movieResults.push(<SearchResult key={i} resultNumber={i} active='true' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
                 }
                 else {
-                    movieResults.push(<SearchResult key={i} resultNumber={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.props.selectMovie}></SearchResult>);
+                    movieResults.push(<SearchResult key={i} resultNumber={i} active='false' movieResult={this.state.movieResults[i]} onSubmit={this.selectMovie}></SearchResult>);
                 }
             }
         }
         return movieResults;
     }
     
+    selectMovie (numberOFMovieResultHovered) {
+        
+        this.setState({isSearchInProgress: false});
+        this.setState({movieSearchValue: this.state.movieResults[numberOFMovieResultHovered].title});
+        this.props.selectMovie(this.state.movieResults[numberOFMovieResultHovered]);
+    }
+
     onKeyDown(event) {
 
         if(event.keyCode == 40) {
-            if(this.state.movieResultHovered < this.state.numberOfMovieResults-1) {
-                let movieResultHovered = this.state.movieResultHovered+1;
-                this.setState({movieResultHovered: movieResultHovered});
+            if(this.state.numberOFMovieResultHovered < this.state.countOfMovieResults-1) {
+                let numberOFMovieResultHovered = this.state.numberOFMovieResultHovered+1;
+                this.setState({numberOFMovieResultHovered: numberOFMovieResultHovered});
             }
         }
         if(event.keyCode == 38) {
-            if(this.state.movieResultHovered > 0) {
-                let movieResultHovered = this.state.movieResultHovered-1;
-                this.setState({movieResultHovered: movieResultHovered});
+            if(this.state.numberOFMovieResultHovered > 0) {
+                let numberOFMovieResultHovered = this.state.numberOFMovieResultHovered-1;
+                this.setState({numberOFMovieResultHovered: numberOFMovieResultHovered});
             }
         }
         if(event.keyCode == 13) {
-            this.setState({isSearchInProgress: false});
-            this.props.selectMovie(this.state.movieResultHovered);
+            this.selectMovie(this.state.numberOFMovieResultHovered);
         }
     }
     
@@ -109,7 +113,7 @@ export default class SearchArea extends React.Component {
         let movieResultsDiv = this.getArrayOfSearchResults();
 
         let headerClass = "container wym-header";
-        if (this.state.isStart) {
+        if (this.state.isInInitialState) {
             headerClass+=" onstart";
         }
 

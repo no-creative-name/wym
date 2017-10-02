@@ -15,11 +15,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSearchInProgress: false,
-      movieSearchValue: "",
-      movieResults: [],
-      movieResultHovered: 0,
-      numberOfMovieResults: 0,
       currentMovieData: {
         "key": null,
         "title":"XXX",
@@ -35,19 +30,12 @@ class App extends React.Component {
         ]
       }
     }
-    this.getMovieResults = this.getMovieResults.bind(this);
     this.selectMovie = this.selectMovie.bind(this);
 
   }
-
-  getMovieResults (movieResults) {
-    this.setState({movieResults: movieResults});
-  }
   
-  selectMovie (key) {
-    this.setState({currentMovieData: this.state.movieResults[key]});
-    this.setState({movieSearchValue: this.state.movieResults[key].title});
-    this.setState({isSearchInProgress: false});
+  selectMovie (movieResult) {
+    this.setState({currentMovieData: movieResult});
   }
 
 
