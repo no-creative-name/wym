@@ -15,6 +15,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
       currentMovieData: {
         "key": null,
         "title":"XXX",
@@ -31,7 +33,20 @@ class App extends React.Component {
       }
     }
     this.selectMovie = this.selectMovie.bind(this);
+    this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
 
+  }
+  
+  componentWillMount() {
+      window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+    
+  componentWillUnmount() {
+      window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+    
+  handleWindowSizeChange() {
+      this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
   }
   
   selectMovie (movieResult) {
@@ -45,7 +60,7 @@ class App extends React.Component {
     return <div className="total">
       <AboutBox/>
       <SearchArea getMovieResults={this.getMovieResults} selectMovie={this.selectMovie}/>
-      <div className="wym-content">
+      <div className="container wym-content">
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>
     </div>;

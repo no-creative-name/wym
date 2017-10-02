@@ -14,7 +14,7 @@ export default class SearchArea extends React.Component {
             movieSearchValue: "",
             countOfMovieResults: 0,
             movieResults: [],
-            numberOFMovieResultHovered: 0,
+            numberOfMovieResultHovered: 0,
             selectedMovieData: {
                 "key": null,
                 "title":"XXX",
@@ -112,7 +112,7 @@ export default class SearchArea extends React.Component {
 
         let movieResultsDiv = this.getArrayOfSearchResults();
 
-        let headerClass = "container wym-header";
+        let headerClass = "wym-header";
         if (this.state.isInInitialState) {
             headerClass+=" onstart";
         }

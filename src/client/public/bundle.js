@@ -10104,17 +10104,17 @@ var AboutBox = function (_React$Component) {
         key: "render",
         value: function render() {
 
-            var topHeaderClass = "wym-top-header";
-            var topHeaderText = "What is WYM?";
+            var aboutBoxClass = "wym-about-box";
+            var aboutBoxText = "What is WYM?";
 
             if (this.state.infoBoxToggled) {
-                topHeaderClass += " helpToggled";
-                topHeaderText = "WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+                aboutBoxClass += " helpToggled";
+                aboutBoxText = "WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
             }
             return _react2.default.createElement(
                 "div",
-                { onClick: this.toggleHelp, className: "wym-top-header" },
-                topHeaderText
+                { onClick: this.toggleHelp, className: "wym-about-box" },
+                aboutBoxText
             );
         }
     }]);
@@ -10329,7 +10329,7 @@ var SearchArea = function (_React$Component) {
             movieSearchValue: "",
             countOfMovieResults: 0,
             movieResults: [],
-            numberOFMovieResultHovered: 0,
+            numberOfMovieResultHovered: 0,
             selectedMovieData: {
                 "key": null,
                 "title": "XXX",
@@ -10430,7 +10430,7 @@ var SearchArea = function (_React$Component) {
 
             var movieResultsDiv = this.getArrayOfSearchResults();
 
-            var headerClass = "container wym-header";
+            var headerClass = "wym-header";
             if (this.state.isInInitialState) {
                 headerClass += " onstart";
             }
@@ -10898,6 +10898,8 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
+      windowWidth: window.innerWidth,
+      windowHeight: window.innerHeight,
       currentMovieData: {
         "key": null,
         "title": "XXX",
@@ -10912,11 +10914,27 @@ var App = function (_React$Component) {
       }
     };
     _this.selectMovie = _this.selectMovie.bind(_this);
+    _this.handleWindowSizeChange = _this.handleWindowSizeChange.bind(_this);
 
     return _this;
   }
 
   _createClass(App, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      window.addEventListener('resize', this.handleWindowSizeChange);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.removeEventListener('resize', this.handleWindowSizeChange);
+    }
+  }, {
+    key: 'handleWindowSizeChange',
+    value: function handleWindowSizeChange() {
+      this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
+    }
+  }, {
     key: 'selectMovie',
     value: function selectMovie(movieResult) {
       this.setState({ currentMovieData: movieResult });
@@ -10932,7 +10950,7 @@ var App = function (_React$Component) {
         _react2.default.createElement(_SearchArea2.default, { getMovieResults: this.getMovieResults, selectMovie: this.selectMovie }),
         _react2.default.createElement(
           'div',
-          { className: 'wym-content' },
+          { className: 'container wym-content' },
           _react2.default.createElement(_MovieInfo2.default, { movie: this.state.currentMovieData })
         )
       );
@@ -12885,7 +12903,7 @@ exports = module.exports = __webpack_require__(57)(undefined);
 
 
 // module
-exports.push([module.i, ".wym-top-header {\n  position: absolute;\n  text-align: center;\n  width: 100%;\n  background-color: white;\n  border-radius: 2px;\n  left: 0;\n  right: 0;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  user-select: none;\n  padding: 10px;\n  cursor: default; }\n  .wym-top-header a {\n    color: #2b2b2b; }\n\n.wym-header {\n  padding-top: 40px;\n  padding-bottom: 40px;\n  text-align: center;\n  transition: all 1s; }\n  .wym-header input {\n    font-size: 2em;\n    padding-left: 50px;\n    height: 50px;\n    width: 600px; }\n\n.onstart {\n  padding-top: 150px; }\n  .onstart img {\n    height: 300px; }\n  .onstart .wym-logo-y {\n    margin-left: -300px; }\n\n.wym-logo {\n  height: 200px;\n  transition: all 1s;\n  -webkit-animation: 2s spin 1s 1 ease-in-out; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  40% {\n    -webkit-transform: rotate(180deg); }\n  60% {\n    -webkit-transform: rotate(180deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n  .wym-logo-y {\n    height: 200px;\n    transition: all 1s;\n    margin-left: -200px;\n    position: absolute; }\n\n.wym-movie-search {\n  margin-top: 40px; }\n\n.wym-movie-search-icon {\n  color: #e3e3e3;\n  position: absolute;\n  z-index: 1;\n  margin-left: 5px;\n  font-family: 'Material Icons';\n  font-size: 40px;\n  line-height: 1.2;\n  margin-right: 40px;\n  transition: all 1s; }\n  .wym-movie-search-icon-active {\n    color: #2b2b2b;\n    position: absolute;\n    z-index: 1;\n    margin-left: 5px;\n    font-family: 'Material Icons';\n    font-size: 40px;\n    line-height: 1.2;\n    margin-right: 40px;\n    transition: all 1s; }\n\n.wym-results {\n  background-color: white;\n  position: relative;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  cursor: pointer;\n  width: 600px; }\n  .wym-results .wym-search-result:hover {\n    background-color: #e3e3e3;\n    transition: background-color 0.3s; }\n  .wym-results .wym-search-result-image {\n    width: 100px; }\n  .wym-results .wym-search-result-text {\n    vertical-align: middle;\n    color: black; }\n\n.active {\n  background-color: #e3e3e3; }\n\n@media only screen and (max-width: 768px) {\n  .wym-search-result-text {\n    font-size: 1.5em; } }\n\n.wym-movie-info {\n  padding: 50px; }\n\n.wym-movie-meta {\n  display: flex; }\n\n.wym-movie-info-text {\n  text-align: left;\n  height: 250px;\n  padding-left: 50px;\n  margin-bottom: 40px; }\n\n.wym-plotbuilder {\n  margin-top: 30px; }\n\n.wym-movie-info-plot {\n  height: 0px;\n  opacity: 0; }\n  .wym-movie-info-plot-active {\n    margin-top: 30px;\n    opacity: 100; }\n\n.wym-movieposter {\n  height: 250px; }\n  .wym-movieposter--small {\n    height: 100px; }\n\n.wym-title {\n  font-size: 25pt; }\n\n.wym-subtitle {\n  font-size: 16pt; }\n\n.wym-time-input input {\n  width: 50px;\n  margin-right: 5px; }\n\nbody {\n  background-color: #2b2b2b; }\n\n.total {\n  min-height: 100%; }\n\n.wym-content {\n  background-color: white; }\n", ""]);
+exports.push([module.i, ".wym-about-box {\n  position: absolute;\n  text-align: center;\n  width: 100%;\n  background-color: white;\n  border-radius: 2px;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  user-select: none;\n  padding: 10px;\n  cursor: default; }\n  .wym-about-box:hover {\n    background-color: #e3e3e3; }\n  .wym-about-box a {\n    color: #2b2b2b; }\n\n.wym-header {\n  transition: 1s;\n  padding-top: 40px;\n  padding-bottom: 40px;\n  text-align: center; }\n  .wym-header input {\n    font-size: 2em;\n    padding-left: 50px;\n    height: 50px;\n    width: 600px; }\n\n.onstart {\n  padding-top: 150px; }\n  .onstart img {\n    height: 300px; }\n  .onstart .wym-logo-y {\n    margin-left: -300px; }\n\n.wym-logo {\n  height: 200px;\n  transition: all 1s;\n  -webkit-animation: 2s spin 1s 1 ease-in-out forwards; }\n\n@-webkit-keyframes spin {\n  0% {\n    -webkit-transform: rotate(0deg); }\n  40% {\n    -webkit-transform: rotate(180deg); }\n  60% {\n    -webkit-transform: rotate(180deg); }\n  100% {\n    -webkit-transform: rotate(360deg); } }\n  .wym-logo-y {\n    height: 200px;\n    transition: all 1s;\n    margin-left: -200px;\n    position: absolute; }\n\n.wym-movie-search {\n  margin-top: 40px; }\n\n.wym-movie-search-icon {\n  color: #e3e3e3;\n  position: absolute;\n  z-index: 1;\n  margin-left: 5px;\n  font-family: 'Material Icons';\n  font-size: 40px;\n  line-height: 1.2;\n  margin-right: 40px;\n  transition: all 1s; }\n  .wym-movie-search-icon-active {\n    color: #2b2b2b;\n    position: absolute;\n    z-index: 1;\n    margin-left: 5px;\n    font-family: 'Material Icons';\n    font-size: 40px;\n    line-height: 1.2;\n    margin-right: 40px;\n    transition: all 1s; }\n\n.wym-results {\n  background-color: white;\n  position: relative;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 1;\n  cursor: pointer;\n  width: 600px; }\n  .wym-results .wym-search-result:hover {\n    background-color: #e3e3e3;\n    transition: background-color 0.3s; }\n  .wym-results .wym-search-result-image {\n    width: 100px; }\n  .wym-results .wym-search-result-text {\n    vertical-align: middle;\n    color: black; }\n\n.active {\n  background-color: #e3e3e3; }\n\n@media only screen and (max-width: 768px) {\n  .wym-search-result-text {\n    font-size: 1.5em; } }\n\n.wym-movie-info {\n  padding: 50px; }\n\n.wym-movie-meta {\n  display: flex; }\n\n.wym-movie-info-text {\n  text-align: left;\n  height: 250px;\n  padding-left: 50px;\n  margin-bottom: 40px; }\n\n.wym-plotbuilder {\n  margin-top: 30px; }\n\n.wym-movie-info-plot {\n  height: 0px;\n  opacity: 0; }\n  .wym-movie-info-plot-active {\n    margin-top: 30px;\n    opacity: 100; }\n\n.wym-movieposter {\n  height: 250px; }\n  .wym-movieposter--small {\n    height: 100px; }\n\n.wym-title {\n  font-size: 25pt; }\n\n.wym-subtitle {\n  font-size: 16pt; }\n\n.wym-time-input input {\n  width: 50px;\n  margin-right: 5px; }\n\nbody {\n  background-color: #2b2b2b; }\n\n.total {\n  min-height: 100%;\n  position: relative; }\n\n#background-video {\n  height: 100%;\n  width: 100%;\n  float: left;\n  top: 0;\n  padding: none;\n  position: fixed; }\n\n.wym-content {\n  background-color: white; }\n", ""]);
 
 // exports
 

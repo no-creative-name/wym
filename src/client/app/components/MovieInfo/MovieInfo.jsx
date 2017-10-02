@@ -48,7 +48,6 @@ export default class MovieInfo extends React.Component {
       return convertedTime;
   }
 
-
   render () {
 
     let plotClass = "box wym-movie-info-plot";

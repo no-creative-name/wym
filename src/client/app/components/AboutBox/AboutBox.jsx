@@ -24,16 +24,16 @@ export default class AboutBox extends React.Component {
     render () {
         
 
-    let topHeaderClass = "wym-top-header";
-    let topHeaderText = "What is WYM?";
+    let aboutBoxClass = "wym-about-box";
+    let aboutBoxText = "What is WYM?";
 
     if (this.state.infoBoxToggled) {
-      topHeaderClass+=" helpToggled";
-      topHeaderText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+        aboutBoxClass+=" helpToggled";
+        aboutBoxText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
     }
         return (
-            <div onClick={this.toggleHelp} className="wym-top-header">
-                {topHeaderText}
+            <div onClick={this.toggleHelp} className="wym-about-box">
+                {aboutBoxText}
             </div>
         )
     }

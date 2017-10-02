@@ -1,29 +1,30 @@
 @import 'variables/colors';
 
-.wym-top-header {
+.wym-about-box {
   position: absolute;
   text-align: center;
   width: 100%;
   background-color: $content-background-color;
   border-radius: 2px;
-  left: 0;
-  right: 0;
   margin-left: auto;
   margin-right: auto;
   z-index: 1;
   user-select: none;
   padding: 10px;
   cursor: default;
+  &:hover {
+    background-color: $menu-point-hover-color;
+  }
   a {
     color: $body-background-color;
   }
 }
 
 .wym-header {
+  transition: 1s;
   padding-top: 40px;
   padding-bottom: 40px;
   text-align: center;
-  transition: all 1s;
   input {
     font-size: 2em;
     padding-left: 50px;
@@ -45,7 +46,7 @@
 .wym-logo {
   height: 200px;
   transition: all 1s;
-  -webkit-animation: 2s spin 1s 1 ease-in-out;
+  -webkit-animation: 2s spin 1s 1 ease-in-out forwards;
   @-webkit-keyframes spin {
       0% { -webkit-transform: rotate(0deg); }
       40% { -webkit-transform: rotate(180deg); }
