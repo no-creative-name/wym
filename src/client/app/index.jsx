@@ -32,7 +32,7 @@ class App extends React.Component {
         ]
       }
     }
-    this.selectMovie = this.selectMovie.bind(this);
+    this.saveMovieResultToState = this.saveMovieResultToState.bind(this);
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
 
   }
@@ -49,7 +49,7 @@ class App extends React.Component {
       this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
   }
   
-  selectMovie (movieResult) {
+  saveMovieResultToState (movieResult) {
     this.setState({currentMovieData: movieResult});
   }
 
@@ -59,7 +59,7 @@ class App extends React.Component {
 
     return <div className="total">
       <AboutBox/>
-      <SearchArea getMovieResults={this.getMovieResults} selectMovie={this.selectMovie}/>
+      <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState}/>
       <div className="container wym-content">
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>

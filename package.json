@@ -8,7 +8,6 @@
     "webpack": "node_modules/.bin/webpack",
     "webpack-dev-server": "node_modules/.bin/webpack-dev-server",
     "webpack:watch": "node_modules/.bin/webpack --watch",
-
     "sass": "node-sass ./src/client/app/sass/ -o ./src/client/public/stylesheets/",
     "sass:watch": "node-sass ./src/client/app/sass/ -o ./src/client/public/stylesheets/ --watch",
     "packit:watch": "start npm run webpack:watch && start npm run sass:watch"
@@ -27,6 +26,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.0",
+    "image-webpack-loader": "^3.4.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.16.1",
     "webpack": "^2.4.1"

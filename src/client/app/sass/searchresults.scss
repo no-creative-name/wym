@@ -1,5 +1,5 @@
-@import 'variables/variables';
-@import 'variables/colors';
+@import 'variables/_variables';
+@import 'variables/_colors';
 
 .wym-results {
   background-color: white;
@@ -22,17 +22,16 @@
       vertical-align: middle;
       color: black;
     }
+    @media only screen and (max-width: 1080px) {
+      font-size: 2em;
+    }
+  }
+  
+  @media only screen and (max-width: 1080px) {
+    font-size: 2em;
   }
 }
 
 .active {
   background-color: $menu-point-hover-color;
-}
-
-@media only screen and (max-width: 768px) {
-
-   .wym-search-result-text {
-     font-size: 1.5em;
-   }
-
 }
