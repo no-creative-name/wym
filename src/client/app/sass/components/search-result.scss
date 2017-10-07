@@ -1,0 +1,21 @@
+
+.wym-search-result {
+    &:hover {
+      background-color: $menu-point-hover-color;
+      transition: background-color $default-hover-time;
+    }
+    &-image {
+      width: 100px;
+    }
+    &-text {
+      vertical-align: middle;
+      color: black;
+    }
+    @media only screen and (max-width: $media-only-mobile-width) {
+      font-size: 2em;
+    }
+}
+
+.active {
+  background-color: $menu-point-hover-color;
+}

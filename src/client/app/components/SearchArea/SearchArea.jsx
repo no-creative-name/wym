@@ -119,12 +119,12 @@ export default class SearchArea extends React.Component {
 
         let searchIconClass = "wym-movie-search-icon";
         if (this.state.isSearchInProgress) {
-            searchIconClass+="-active";
+            searchIconClass+=` ${searchIconClass}--active`;
         }
 
         return (
             <div className={headerClass} onKeyDown={this.onKeyDown}>
-                <Logo className="wym-header-logo"></Logo>
+                <Logo></Logo>
                 <div className="wym-movie-search">
                     <span className={searchIconClass}>search</span>
                     <OnTypeInput value={this.state.movieSearchValue} onChange={this.onInput} onSubmit={this.calculateSearchResultsAndSaveToState}>search</OnTypeInput>

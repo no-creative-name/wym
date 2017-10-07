@@ -1,13 +1,16 @@
-@import 'variables/variables';
-@import 'header';
-@import 'searchresults';
-@import 'movieinfo';
+@import 'variables/_variables';
+@import 'variables/_colors';
+@import 'components/about-box';
+@import 'components/button';
+@import 'components/input';
+@import 'components/logo';
+@import 'components/movie-info/movie-poster';
+@import 'components/movie-info/timecode-input';
+@import 'components/movie-info';
+@import 'components/search-area';
 
 body {
   background-color: $body-background-color;
-}
-
-.total {
   min-height: 100%;
   position: relative;
 }

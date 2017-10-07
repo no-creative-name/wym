@@ -1,0 +1,11 @@
+.wym-time-input {
+  input {
+    width: 50px;
+    margin-right: 5px;
+    
+    @media only screen and (max-width: $media-only-mobile-width) {
+      width: 10%;
+      font-size: 2em;
+    }
+  }
+}

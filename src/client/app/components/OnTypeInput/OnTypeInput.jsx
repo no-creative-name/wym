@@ -37,7 +37,7 @@ export default class OnTypeInput extends React.Component {
   }
 
   render () {
-    return <input className="input" value={this.props.value} placeholder="Search for a movie..." onChange={this.onChange} onClick={this.onClick} />
+    return <input className="input wym-input" value={this.props.value} placeholder="Search for a movie..." onChange={this.onChange} onClick={this.onClick} />
   }
 
 }

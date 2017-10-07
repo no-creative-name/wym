@@ -1,0 +1,56 @@
+.wym-header {
+    transition: 1s;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;
+    input {
+      font-size: 2em;
+      padding-left: 50px;
+      height: 50px;
+      width: 600px;
+  
+      @media only screen and (max-width: $media-only-mobile-width) {
+        height: 100px;
+        width: 100%;
+      }
+    }
+  }
+  
+  .wym-movie-search {
+    margin-top: 40px;
+  }
+  
+  .wym-movie-search-icon {
+    color: $menu-point-hover-color;
+    position: absolute;
+    z-index: 1;
+    margin-left: 5px;
+    font-family: 'Material Icons';
+    font-size: 40px;
+    line-height: 1.2;
+    margin-right: 40px;
+    transition: all 1s;
+    &--active {
+      color: $body-background-color;
+    }
+    @media only screen and (max-width: $media-only-mobile-width) {
+      line-height: 2.5;
+    }
+  }
+  
+.wym-results {
+    background-color: white;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    cursor: pointer;
+    width: 600px;
+    
+    @media only screen and (max-width: $media-only-mobile-width) {
+      width: 100%;
+    }
+
+    @import 'search-result'
+  
+}

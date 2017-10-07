@@ -1,0 +1,28 @@
+.onstart {
+    padding-top: 150px;
+    .wym-logo {
+      height: $start-logo-height;
+    }
+    .wym-logo-y {
+      height: $start-logo-height;
+      margin-left: -$start-logo-height;
+    }
+  }
+  
+  .wym-logo {
+    height: $logo-height;
+    transition: all 1s;
+    -webkit-animation: 2s spin 1s 1 ease-in-out forwards;
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        40% { -webkit-transform: rotate(180deg); }
+        60% { -webkit-transform: rotate(180deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    &-y {
+      height: $logo-height;
+      transition: all 1s;
+      margin-left: -$logo-height;
+      position: absolute;
+    }
+  }

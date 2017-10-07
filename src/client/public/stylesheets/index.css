@@ -1,42 +1,41 @@
-.wym-top-header {
+.wym-about-box {
   position: absolute;
   text-align: center;
   width: 100%;
   background-color: white;
   border-radius: 2px;
-  left: 0;
-  right: 0;
   margin-left: auto;
   margin-right: auto;
   z-index: 1;
   user-select: none;
   padding: 10px;
   cursor: default; }
-  .wym-top-header a {
+  .wym-about-box:hover {
+    background-color: #e3e3e3; }
+  .wym-about-box a {
     color: #2b2b2b; }
+  @media only screen and (max-width: 1080px) {
+    .wym-about-box {
+      font-size: 2em; } }
 
-.wym-header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  text-align: center;
-  transition: all 1s; }
-  .wym-header input {
-    font-size: 2em;
-    padding-left: 50px;
-    height: 50px;
-    width: 600px; }
+@media only screen and (max-width: 1080px) {
+  .wym-button {
+    width: 50%;
+    height: 100px;
+    font-size: 2em; } }
 
 .onstart {
   padding-top: 150px; }
-  .onstart img {
-    height: 300px; }
+  .onstart .wym-logo {
+    height: 400px; }
   .onstart .wym-logo-y {
-    margin-left: -300px; }
+    height: 400px;
+    margin-left: -400px; }
 
 .wym-logo {
-  height: 200px;
+  height: 300px;
   transition: all 1s;
-  -webkit-animation: 2s spin 1s 1 ease-in-out; }
+  -webkit-animation: 2s spin 1s 1 ease-in-out forwards; }
 
 @-webkit-keyframes spin {
   0% {
@@ -48,58 +47,23 @@
   100% {
     -webkit-transform: rotate(360deg); } }
   .wym-logo-y {
-    height: 200px;
+    height: 300px;
     transition: all 1s;
-    margin-left: -200px;
+    margin-left: -300px;
     position: absolute; }
 
-.wym-movie-search {
-  margin-top: 40px; }
+.wym-movieposter {
+  height: 250px; }
+  .wym-movieposter--small {
+    height: 100px; }
 
-.wym-movie-search-icon {
-  color: #e3e3e3;
-  position: absolute;
-  z-index: 1;
-  margin-left: 5px;
-  font-family: 'Material Icons';
-  font-size: 40px;
-  line-height: 1.2;
-  margin-right: 40px;
-  transition: all 1s; }
-  .wym-movie-search-icon-active {
-    color: #2b2b2b;
-    position: absolute;
-    z-index: 1;
-    margin-left: 5px;
-    font-family: 'Material Icons';
-    font-size: 40px;
-    line-height: 1.2;
-    margin-right: 40px;
-    transition: all 1s; }
-
-.wym-results {
-  background-color: white;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 1;
-  cursor: pointer;
-  width: 600px; }
-  .wym-results .wym-search-result:hover {
-    background-color: #e3e3e3;
-    transition: background-color 0.3s; }
-  .wym-results .wym-search-result-image {
-    width: 100px; }
-  .wym-results .wym-search-result-text {
-    vertical-align: middle;
-    color: black; }
-
-.active {
-  background-color: #e3e3e3; }
-
-@media only screen and (max-width: 768px) {
-  .wym-search-result-text {
-    font-size: 1.5em; } }
+.wym-time-input input {
+  width: 50px;
+  margin-right: 5px; }
+  @media only screen and (max-width: 1080px) {
+    .wym-time-input input {
+      width: 10%;
+      font-size: 2em; } }
 
 .wym-movie-info {
   padding: 50px; }
@@ -123,26 +87,75 @@
     margin-top: 30px;
     opacity: 100; }
 
-.wym-movieposter {
-  height: 250px; }
-  .wym-movieposter--small {
-    height: 100px; }
-
 .wym-title {
   font-size: 25pt; }
 
 .wym-subtitle {
   font-size: 16pt; }
 
-.wym-time-input input {
-  width: 50px;
-  margin-right: 5px; }
+.wym-header {
+  transition: 1s;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center; }
+  .wym-header input {
+    font-size: 2em;
+    padding-left: 50px;
+    height: 50px;
+    width: 600px; }
+    @media only screen and (max-width: 1080px) {
+      .wym-header input {
+        height: 100px;
+        width: 100%; } }
+
+.wym-movie-search {
+  margin-top: 40px; }
+
+.wym-movie-search-icon {
+  color: #e3e3e3;
+  position: absolute;
+  z-index: 1;
+  margin-left: 5px;
+  font-family: 'Material Icons';
+  font-size: 40px;
+  line-height: 1.2;
+  margin-right: 40px;
+  transition: all 1s; }
+  .wym-movie-search-icon--active {
+    color: #2b2b2b; }
+  @media only screen and (max-width: 1080px) {
+    .wym-movie-search-icon {
+      line-height: 2.5; } }
+
+.wym-results {
+  background-color: white;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  cursor: pointer;
+  width: 600px; }
+  @media only screen and (max-width: 1080px) {
+    .wym-results {
+      width: 100%; } }
+  .wym-results .wym-search-result:hover {
+    background-color: #e3e3e3;
+    transition: background-color 0.3s; }
+  .wym-results .wym-search-result-image {
+    width: 100px; }
+  .wym-results .wym-search-result-text {
+    vertical-align: middle;
+    color: black; }
+  @media only screen and (max-width: 1080px) {
+    .wym-results .wym-search-result {
+      font-size: 2em; } }
+  .wym-results .active {
+    background-color: #e3e3e3; }
 
 body {
-  background-color: #2b2b2b; }
-
-.total {
-  min-height: 100%; }
+  background-color: #2b2b2b;
+  min-height: 100%;
+  position: relative; }
 
 .wym-content {
   background-color: white; }

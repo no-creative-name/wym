@@ -1,0 +1,22 @@
+.wym-about-box {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background-color: $content-background-color;
+    border-radius: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    user-select: none;
+    padding: 10px;
+    cursor: default;
+    &:hover {
+      background-color: $menu-point-hover-color;
+    }
+    a {
+      color: $body-background-color;
+    }
+    @media only screen and (max-width: $media-only-mobile-width) {
+      font-size: 2em;
+    }
+  }

@@ -57,7 +57,7 @@ class App extends React.Component {
 
   render () {
 
-    return <div className="total">
+    return <div>
       <AboutBox/>
       <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState}/>
       <div className="container wym-content">
