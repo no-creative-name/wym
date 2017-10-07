@@ -59,12 +59,16 @@ export default class TimecodeInput extends React.Component {
 	render () {
 		let minutesInput = null;
 
-		return <div className="wym-time-input">
+		return (
+		<div className="wym-time-input">
+			<div className="wym-timecode-input">
 				<Input value={this.state.hours} placeholder="h" onChange={this.onChangeHours} onSubmit={this.onSubmit}/>
 				<Input value={this.state.minutes} placeholder="m" onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
 				<Input value={this.state.seconds} placeholder="s" onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
-				<Button buttonText="SEARCH" onClick={this.onSubmit}/>
-		</div>;
+			</div>
+			<Button buttonText="SEARCH" onClick={this.onSubmit}/>
+		</div>
+		);
 	}
 
 

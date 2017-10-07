@@ -28,8 +28,16 @@
   
   .wym-title {
     font-size: 25pt;
+    
+    @media only screen and (max-width: $media-only-mobile-width) {
+      font-size: 30pt;
+    }
   }
   
   .wym-subtitle {
     font-size: 16pt;
+    
+    @media only screen and (max-width: $media-only-mobile-width) {
+      font-size: 21pt;
+    }
   }

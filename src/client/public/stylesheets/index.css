@@ -57,13 +57,22 @@
   .wym-movieposter--small {
     height: 100px; }
 
-.wym-time-input input {
-  width: 50px;
-  margin-right: 5px; }
-  @media only screen and (max-width: 1080px) {
-    .wym-time-input input {
-      width: 10%;
-      font-size: 2em; } }
+.wym-time-input {
+  display: flex; }
+  .wym-time-input input {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px; }
+    @media only screen and (max-width: 1080px) {
+      .wym-time-input input {
+        width: 100px;
+        height: 100px;
+        font-size: 2em; } }
+  .wym-time-input button {
+    height: 50px; }
+    @media only screen and (max-width: 1080px) {
+      .wym-time-input button {
+        height: 100px; } }
 
 .wym-movie-info {
   padding: 50px; }
@@ -89,9 +98,15 @@
 
 .wym-title {
   font-size: 25pt; }
+  @media only screen and (max-width: 1080px) {
+    .wym-title {
+      font-size: 30pt; } }
 
 .wym-subtitle {
   font-size: 16pt; }
+  @media only screen and (max-width: 1080px) {
+    .wym-subtitle {
+      font-size: 21pt; } }
 
 .wym-header {
   transition: 1s;
