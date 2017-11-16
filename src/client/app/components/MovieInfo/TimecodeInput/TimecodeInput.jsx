@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from '../../Input/Input.jsx';
+import InputSlider from '../../InputSlider/InputSlider.jsx';
 import Button from '../../Button/Button.jsx';
 
 export default class TimecodeInput extends React.Component {
@@ -15,6 +16,7 @@ export default class TimecodeInput extends React.Component {
 		this.onChangeMinutes = this.onChangeMinutes.bind(this);
 		this.onChangeSeconds = this.onChangeSeconds.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+		this.onSliderSubmit = this.onSliderSubmit.bind(this);
 	}
 
 	onChangeHours (value) {
@@ -56,6 +58,25 @@ export default class TimecodeInput extends React.Component {
 		}
 	}
 
+	onSliderSubmit (value) {
+		let minutes = value%60;
+		let hours = (value-minutes) / 60;
+
+		let zero = "" + 0;
+		
+		if (minutes.toString(10).length == 1) {
+			minutes = zero.concat(minutes)
+		}
+
+		let timecode = hours.toString().concat(minutes.toString().concat("00"));
+		
+		if(this.props.onSubmit) {
+			this.props.onSubmit(timecode);
+		}
+
+		console.log(minutes);
+	}
+
 	render () {
 		let minutesInput = null;
 
@@ -66,6 +87,7 @@ export default class TimecodeInput extends React.Component {
 				<Input value={this.state.minutes} placeholder="m" onChange={this.onChangeMinutes} onSubmit={this.onSubmit}/>
 				<Input value={this.state.seconds} placeholder="s" onChange={this.onChangeSeconds} onSubmit={this.onSubmit}/>
 			</div>
+			<InputSlider movieLengthInMinutes="120" onSubmit={this.onSliderSubmit}/>
 			<Button buttonText="SEARCH" onClick={this.onSubmit}/>
 		</div>
 		);

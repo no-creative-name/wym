@@ -57,22 +57,26 @@
   .wym-movieposter--small {
     height: 100px; }
 
-.wym-time-input {
+.wym-time-input button {
+  height: 50px; }
+  @media only screen and (max-width: 1080px) {
+    .wym-time-input button {
+      height: 100px; } }
+
+.wym-timecode-input {
   display: flex; }
-  .wym-time-input input {
+  .wym-timecode-input input {
     width: 50px;
     height: 50px;
     margin-right: 5px; }
     @media only screen and (max-width: 1080px) {
-      .wym-time-input input {
+      .wym-timecode-input input {
         width: 100px;
         height: 100px;
         font-size: 2em; } }
-  .wym-time-input button {
-    height: 50px; }
-    @media only screen and (max-width: 1080px) {
-      .wym-time-input button {
-        height: 100px; } }
+
+.wym-timecode-input-slider {
+  width: 100%; }
 
 .wym-movie-info {
   padding: 50px; }

@@ -1,4 +1,14 @@
-.wym-time-input {
+.wym-time-input{
+  button {
+    height: 50px;
+    
+    @media only screen and (max-width: $media-only-mobile-width) {
+      height: 100px;
+    }
+  }
+}
+
+.wym-timecode-input {
   display: flex;
   input {
     width: 50px;
@@ -11,11 +21,8 @@
       font-size: 2em;
     }
   }
-  button {
-    height: 50px;
-    
-    @media only screen and (max-width: $media-only-mobile-width) {
-      height: 100px;
-    }
-  }
+}
+
+.wym-timecode-input-slider {
+    width: 100%;
 }
