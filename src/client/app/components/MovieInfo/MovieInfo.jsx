@@ -13,6 +13,7 @@ export default class MovieInfo extends React.Component {
     }
     this.buildPlot = this.buildPlot.bind(this);
     this.convertTimecodeToHMS = this.convertTimecodeToHMS.bind(this);
+    this.convertTimecodeToMinutes = this.convertTimecodeToMinutes.bind(this);
   }
 
   buildPlot (inputTimecode) {
@@ -39,13 +40,23 @@ export default class MovieInfo extends React.Component {
 
   convertTimecodeToHMS (timecode) {
 
-      let hours = ""+Math.floor((timecode / 10000) % 10) + " h, ";
-      let minutes = ""+Math.floor((timecode / 1000) % 10)+Math.floor((timecode / 100) % 10)+" m, ";
-      let seconds = ""+Math.floor((timecode / 10) % 10)+Math.floor((timecode / 1) % 10) + " s";
+    let hours = ""+Math.floor((timecode / 10000) % 10) + " h, ";
+    let minutes = ""+Math.floor((timecode / 1000) % 10)+Math.floor((timecode / 100) % 10)+" m, ";
+    let seconds = ""+Math.floor((timecode / 10) % 10)+Math.floor((timecode / 1) % 10) + " s";
 
-      let convertedTime = hours+minutes+seconds;
+    let convertedTime = hours+minutes+seconds;
 
-      return convertedTime;
+    return convertedTime;
+
+  }
+
+  convertTimecodeToMinutes (timecode) {
+
+    let hours = Math.floor((timecode / 10000) % 10);
+    let minutes = Math.floor((timecode / 1000) % 10)*10 + Math.floor((timecode / 100) % 10);
+
+    return hours*60 + minutes;
+
   }
 
   render () {
@@ -68,7 +79,7 @@ export default class MovieInfo extends React.Component {
           </div>
         </div>
         <div className="wym-plotbuilder">
-          <TimecodeInput onSubmit={this.buildPlot}></TimecodeInput>
+          <TimecodeInput onSubmit={this.buildPlot} movieLengthInMinutes={this.convertTimecodeToMinutes(this.props.movie.duration)}></TimecodeInput>
           <div className={plotClass}>{this.state.fullplot}</div>
         </div>
       </div>;
