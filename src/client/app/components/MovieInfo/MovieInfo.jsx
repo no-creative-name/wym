@@ -17,17 +17,14 @@ export default class MovieInfo extends React.Component {
   }
 
   buildPlot (inputTimecode) {
-
     this.setState({fullplot:''});
 
     let plots = [];
-
     for (let i = 0; i < Object.keys(this.props.movie.plot).length; i++) {
       plots.push(this.props.movie.plot[i]);
     }
 
     let text = "";
-
     for(let i = 0; i < plots.length; i++) {
         if(plots[i].timecode <= inputTimecode) {
           text = text.slice(0).concat(plots[i].text);
@@ -35,11 +32,9 @@ export default class MovieInfo extends React.Component {
     }
 
     this.setState({fullplot: text});
-
   }
 
   convertTimecodeToHMS (timecode) {
-
     let hours = ""+Math.floor((timecode / 10000) % 10) + " h, ";
     let minutes = ""+Math.floor((timecode / 1000) % 10)+Math.floor((timecode / 100) % 10)+" m, ";
     let seconds = ""+Math.floor((timecode / 10) % 10)+Math.floor((timecode / 1) % 10) + " s";
@@ -47,20 +42,16 @@ export default class MovieInfo extends React.Component {
     let convertedTime = hours+minutes+seconds;
 
     return convertedTime;
-
   }
 
   convertTimecodeToMinutes (timecode) {
-
     let hours = Math.floor((timecode / 10000) % 10);
     let minutes = Math.floor((timecode / 1000) % 10)*10 + Math.floor((timecode / 100) % 10);
 
     return hours*60 + minutes;
-
   }
 
   render () {
-
     let plotClass = "box wym-movie-info-plot";
     if(this.state.fullplot != '') {
       plotClass+="-active";

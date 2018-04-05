@@ -47,7 +47,6 @@ export default class SearchArea extends React.Component {
     }
 
     calculateSearchResultsAndSaveToState (searchTerm) {
-
         let movieResults = [];
         let movieResultCounter = 0;
 
@@ -66,7 +65,6 @@ export default class SearchArea extends React.Component {
     }
 
     getArrayOfSearchResults () {
-
         let movieResults = [];
 
         if(this.state.isSearchInProgress) {
@@ -83,14 +81,12 @@ export default class SearchArea extends React.Component {
     }
     
     selectMovie (numberOfMovieResultHovered) {
-        
         this.setState({isSearchInProgress: false});
         this.setState({movieSearchValue: this.state.movieResults[numberOfMovieResultHovered].title});
         this.props.saveMovieResultToState(this.state.movieResults[numberOfMovieResultHovered]);
     }
 
     onKeyDown(event) {
-
         if(event.keyCode == 40) {
             if(this.state.numberOfMovieResultHovered < this.state.countOfMovieResults-1) {
                 let numberOfMovieResultHovered = this.state.numberOfMovieResultHovered+1;
@@ -109,7 +105,6 @@ export default class SearchArea extends React.Component {
     }
     
     render() {
-
         let movieResultsDiv = this.getArrayOfSearchResults();
 
         let headerClass = "wym-header";

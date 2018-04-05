@@ -10083,7 +10083,6 @@ var AboutBox = function (_React$Component) {
     }, {
         key: "render",
         value: function render() {
-
             var aboutBoxClass = "wym-about-box";
             var aboutBoxText = "What is WYM?";
 
@@ -10159,17 +10158,14 @@ var MovieInfo = function (_React$Component) {
   _createClass(MovieInfo, [{
     key: 'buildPlot',
     value: function buildPlot(inputTimecode) {
-
       this.setState({ fullplot: '' });
 
       var plots = [];
-
       for (var i = 0; i < Object.keys(this.props.movie.plot).length; i++) {
         plots.push(this.props.movie.plot[i]);
       }
 
       var text = "";
-
       for (var _i = 0; _i < plots.length; _i++) {
         if (plots[_i].timecode <= inputTimecode) {
           text = text.slice(0).concat(plots[_i].text);
@@ -10181,7 +10177,6 @@ var MovieInfo = function (_React$Component) {
   }, {
     key: 'convertTimecodeToHMS',
     value: function convertTimecodeToHMS(timecode) {
-
       var hours = "" + Math.floor(timecode / 10000 % 10) + " h, ";
       var minutes = "" + Math.floor(timecode / 1000 % 10) + Math.floor(timecode / 100 % 10) + " m, ";
       var seconds = "" + Math.floor(timecode / 10 % 10) + Math.floor(timecode / 1 % 10) + " s";
@@ -10193,7 +10188,6 @@ var MovieInfo = function (_React$Component) {
   }, {
     key: 'convertTimecodeToMinutes',
     value: function convertTimecodeToMinutes(timecode) {
-
       var hours = Math.floor(timecode / 10000 % 10);
       var minutes = Math.floor(timecode / 1000 % 10) * 10 + Math.floor(timecode / 100 % 10);
 
@@ -10202,7 +10196,6 @@ var MovieInfo = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       var plotClass = "box wym-movie-info-plot";
       if (this.state.fullplot != '') {
         plotClass += "-active";
@@ -10354,7 +10347,6 @@ var SearchArea = function (_React$Component) {
     }, {
         key: 'calculateSearchResultsAndSaveToState',
         value: function calculateSearchResultsAndSaveToState(searchTerm) {
-
             var movieResults = [];
             var movieResultCounter = 0;
 
@@ -10372,7 +10364,6 @@ var SearchArea = function (_React$Component) {
     }, {
         key: 'getArrayOfSearchResults',
         value: function getArrayOfSearchResults() {
-
             var movieResults = [];
 
             if (this.state.isSearchInProgress) {
@@ -10389,7 +10380,6 @@ var SearchArea = function (_React$Component) {
     }, {
         key: 'selectMovie',
         value: function selectMovie(numberOfMovieResultHovered) {
-
             this.setState({ isSearchInProgress: false });
             this.setState({ movieSearchValue: this.state.movieResults[numberOfMovieResultHovered].title });
             this.props.saveMovieResultToState(this.state.movieResults[numberOfMovieResultHovered]);
@@ -10397,7 +10387,6 @@ var SearchArea = function (_React$Component) {
     }, {
         key: 'onKeyDown',
         value: function onKeyDown(event) {
-
             if (event.keyCode == 40) {
                 if (this.state.numberOfMovieResultHovered < this.state.countOfMovieResults - 1) {
                     var numberOfMovieResultHovered = this.state.numberOfMovieResultHovered + 1;
@@ -10417,7 +10406,6 @@ var SearchArea = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-
             var movieResultsDiv = this.getArrayOfSearchResults();
 
             var headerClass = "wym-header";
@@ -10808,7 +10796,6 @@ var TimecodeInput = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-
 			return _react2.default.createElement(
 				'div',
 				{ className: 'wym-time-input' },
@@ -10879,7 +10866,6 @@ var SearchResult = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       var resultClass = "wym-search-result";
 
       if (this.props.active == 'true') {
@@ -11017,7 +11003,6 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         'div',
         null,

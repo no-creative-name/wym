@@ -8,7 +8,7 @@ export default class AboutBox extends React.Component {
         this.state = {
             infoBoxToggled: false
         }
-
+ 
         this.toggleHelp = this.toggleHelp.bind(this);
     }
     
@@ -22,20 +22,17 @@ export default class AboutBox extends React.Component {
     }
 
     render () {
-        
+        let aboutBoxClass = "wym-about-box";
+        let aboutBoxText = "What is WYM?";
 
-    let aboutBoxClass = "wym-about-box";
-    let aboutBoxText = "What is WYM?";
-
-    if (this.state.infoBoxToggled) {
-        aboutBoxClass+=" helpToggled";
-        aboutBoxText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
-    }
-        return (
-            <div onClick={this.toggleHelp} className="wym-about-box">
-                {aboutBoxText}
-            </div>
-        )
-    }
-
+        if (this.state.infoBoxToggled) {
+            aboutBoxClass+=" helpToggled";
+            aboutBoxText="WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+        }
+            return (
+                <div onClick={this.toggleHelp} className="wym-about-box">
+                    {aboutBoxText}
+                </div>
+            )
+        }
 }

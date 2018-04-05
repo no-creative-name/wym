@@ -38,25 +38,22 @@ class App extends React.Component {
   }
   
   componentWillMount() {
-      window.addEventListener('resize', this.handleWindowSizeChange);
+    window.addEventListener('resize', this.handleWindowSizeChange);
   }
     
   componentWillUnmount() {
-      window.removeEventListener('resize', this.handleWindowSizeChange);
+    window.removeEventListener('resize', this.handleWindowSizeChange);
   }
     
   handleWindowSizeChange() {
-      this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
+    this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
   }
   
   saveMovieResultToState (movieResult) {
     this.setState({currentMovieData: movieResult});
   }
 
-
-
   render () {
-
     return <div>
       <AboutBox/>
       <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState}/>
@@ -64,7 +61,6 @@ class App extends React.Component {
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>
     </div>;
-
   }
 
 }

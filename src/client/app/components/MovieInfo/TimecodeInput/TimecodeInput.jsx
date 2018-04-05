@@ -77,7 +77,6 @@ export default class TimecodeInput extends React.Component {
 	}
 
 	render () {
-
 		return (
 		<div className="wym-time-input">
 			<div className="wym-timecode-input">
@@ -89,6 +88,5 @@ export default class TimecodeInput extends React.Component {
 		</div>
 		);
 	}
-
 
 }

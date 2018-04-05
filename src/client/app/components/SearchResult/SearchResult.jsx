@@ -17,7 +17,6 @@ export default class SearchResult extends React.Component {
   }
 
   render () {
-
     let resultClass = "wym-search-result";
 
     if(this.props.active == 'true') {
