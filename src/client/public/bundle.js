@@ -10733,21 +10733,23 @@ var TimecodeInput = function (_React$Component) {
   _createClass(TimecodeInput, [{
     key: 'onChangeHours',
     value: function onChangeHours(value) {
-      var currentTimeInMinutes = parseInt(value * 60) + parseInt(this.state.minutes);
       this.setState({ hours: value }, this.onSubmit);
-      this.setState({ currentTimeInMinutes: currentTimeInMinutes });
     }
   }, {
     key: 'onChangeMinutes',
     value: function onChangeMinutes(value) {
-      var currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(value);
       this.setState({ minutes: value }, this.onSubmit);
-      this.setState({ currentTimeInMinutes: currentTimeInMinutes });
     }
   }, {
     key: 'onChangeSeconds',
     value: function onChangeSeconds(value) {
       this.setState({ seconds: value });
+    }
+  }, {
+    key: 'updateCurrentTimeInMinutes',
+    value: function updateCurrentTimeInMinutes() {
+      var currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(this.state.minutes);
+      this.setState({ currentTimeInMinutes: currentTimeInMinutes });
     }
   }, {
     key: 'onChangeSlider',
@@ -10774,6 +10776,8 @@ var TimecodeInput = function (_React$Component) {
   }, {
     key: 'onSubmit',
     value: function onSubmit() {
+      this.updateCurrentTimeInMinutes();
+
       var hours = this.state.hours + '';
       var minutes = this.state.minutes + '';
       var seconds = this.state.seconds;

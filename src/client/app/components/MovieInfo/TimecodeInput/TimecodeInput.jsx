@@ -21,17 +21,18 @@ export default class TimecodeInput extends React.Component {
   }
 
   onChangeHours(value) {
-    let currentTimeInMinutes = parseInt(value * 60) + parseInt(this.state.minutes);
     this.setState({ hours: value }, this.onSubmit);
-    this.setState({ currentTimeInMinutes: currentTimeInMinutes });
   }
   onChangeMinutes(value) {
-    let currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(value);
     this.setState({ minutes: value }, this.onSubmit);
-    this.setState({ currentTimeInMinutes: currentTimeInMinutes });
   }
   onChangeSeconds(value) {
     this.setState({ seconds: value });
+  }
+
+  updateCurrentTimeInMinutes() {
+    let currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(this.state.minutes);
+    this.setState({ currentTimeInMinutes: currentTimeInMinutes });
   }
 
   onChangeSlider(value) {
@@ -56,6 +57,8 @@ export default class TimecodeInput extends React.Component {
   }
 
   onSubmit() {
+    this.updateCurrentTimeInMinutes();
+
     let hours = this.state.hours + '';
     let minutes = this.state.minutes + '';
     let seconds = this.state.seconds;
