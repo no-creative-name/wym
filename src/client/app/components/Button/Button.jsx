@@ -3,17 +3,17 @@ import React from 'react';
 
 export default class Button extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick () {
-      this.props.onClick();
+  onClick() {
+    this.props.onClick();
   }
 
-  render () {
+  render() {
     return <button className="button wym-button" onClick={this.onClick}>{this.props.buttonText}</button>
   }
 

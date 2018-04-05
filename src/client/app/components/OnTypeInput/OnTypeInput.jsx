@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class OnTypeInput extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       value: props.value || ''
@@ -12,22 +12,22 @@ export default class OnTypeInput extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onChange (event) {
-		this.setState({value: event.target.value});
-		this.onSubmit(event.target.value);
-    if(this.props.onChange) {
+  onChange(event) {
+    this.setState({ value: event.target.value });
+    this.onSubmit(event.target.value);
+    if (this.props.onChange) {
       this.props.onChange(event.target.value);
     }
-	}
+  }
 
 
-  onClick (event) {
+  onClick(event) {
     this.props.onChange('');
   }
 
-  onSubmit (value) {
-    if(this.props.onSubmit) {
-      if(value == "") {
+  onSubmit(value) {
+    if (this.props.onSubmit) {
+      if (value == "") {
         this.props.onSubmit("");
       }
       else {
@@ -36,7 +36,7 @@ export default class OnTypeInput extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return <input className="input wym-input" value={this.props.value} placeholder="Search for a movie..." onChange={this.onChange} onClick={this.onClick} />
   }
 

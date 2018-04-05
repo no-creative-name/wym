@@ -2,13 +2,13 @@ import React from 'react';
 
 export default class MoviePoster extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
     }
   }
 
-  render () {
+  render() {
     return <img className="wym-movieposter" src={this.props.imageSource}></img>
   }
 

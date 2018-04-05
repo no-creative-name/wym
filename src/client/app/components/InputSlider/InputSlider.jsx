@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class InputSlider extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
     }
@@ -10,13 +10,13 @@ export default class InputSlider extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange (event) {
-    if(this.props.onSubmit) {
+  onChange(event) {
+    if (this.props.onSubmit) {
       this.props.onSubmit(event.target.value);
     }
-	}
+  }
 
-  render () {
+  render() {
     return <input className="slider wym-timecode-input-slider" onChange={this.onChange} value={this.props.value} type="range" min="0" max={this.props.movieLengthInMinutes}></input>
   }
 }

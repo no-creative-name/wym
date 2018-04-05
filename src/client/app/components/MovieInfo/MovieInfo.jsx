@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import TimecodeInput from './TimecodeInput/TimecodeInput.jsx';
 import MoviePoster from './MoviePoster/MoviePoster.jsx';
 
@@ -16,8 +16,8 @@ export default class MovieInfo extends React.Component {
     this.convertTimecodeToMinutes = this.convertTimecodeToMinutes.bind(this);
   }
 
-  buildPlot (inputTimecode) {
-    this.setState({fullplot:''});
+  buildPlot(inputTimecode) {
+    this.setState({ fullplot: '' });
 
     let plots = [];
     for (let i = 0; i < Object.keys(this.props.movie.plot).length; i++) {
@@ -25,39 +25,39 @@ export default class MovieInfo extends React.Component {
     }
 
     let text = "";
-    for(let i = 0; i < plots.length; i++) {
-        if(plots[i].timecode <= inputTimecode) {
-          text = text.slice(0).concat(plots[i].text);
-        }
+    for (let i = 0; i < plots.length; i++) {
+      if (plots[i].timecode <= inputTimecode) {
+        text = text.slice(0).concat(plots[i].text);
+      }
     }
 
-    this.setState({fullplot: text});
+    this.setState({ fullplot: text });
   }
 
-  convertTimecodeToHMS (timecode) {
-    let hours = ""+Math.floor((timecode / 10000) % 10) + " h, ";
-    let minutes = ""+Math.floor((timecode / 1000) % 10)+Math.floor((timecode / 100) % 10)+" m, ";
-    let seconds = ""+Math.floor((timecode / 10) % 10)+Math.floor((timecode / 1) % 10) + " s";
+  convertTimecodeToHMS(timecode) {
+    let hours = "" + Math.floor((timecode / 10000) % 10) + " h, ";
+    let minutes = "" + Math.floor((timecode / 1000) % 10) + Math.floor((timecode / 100) % 10) + " m, ";
+    let seconds = "" + Math.floor((timecode / 10) % 10) + Math.floor((timecode / 1) % 10) + " s";
 
-    let convertedTime = hours+minutes+seconds;
+    let convertedTime = hours + minutes + seconds;
 
     return convertedTime;
   }
 
-  convertTimecodeToMinutes (timecode) {
+  convertTimecodeToMinutes(timecode) {
     let hours = Math.floor((timecode / 10000) % 10);
-    let minutes = Math.floor((timecode / 1000) % 10)*10 + Math.floor((timecode / 100) % 10);
+    let minutes = Math.floor((timecode / 1000) % 10) * 10 + Math.floor((timecode / 100) % 10);
 
-    return hours*60 + minutes;
+    return hours * 60 + minutes;
   }
 
-  render () {
+  render() {
     let plotClass = "box wym-movie-info-plot";
-    if(this.state.fullplot != '') {
-      plotClass+="-active";
+    if (this.state.fullplot != '') {
+      plotClass += "-active";
     }
 
-    if(this.props.movie.key != null) {
+    if (this.props.movie.key != null) {
 
       return <div className="wym-movie-info">
         <div className="wym-movie-meta">

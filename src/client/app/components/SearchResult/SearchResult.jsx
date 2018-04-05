@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 
 export default class SearchResult extends React.Component {
 
@@ -10,16 +10,16 @@ export default class SearchResult extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick () {
-    if(this.props.onSubmit) {
+  onClick() {
+    if (this.props.onSubmit) {
       this.props.onSubmit(this.props.resultNumber);
     }
   }
 
-  render () {
+  render() {
     let resultClass = "wym-search-result";
 
-    if(this.props.active == 'true') {
+    if (this.props.active == 'true') {
       resultClass = "wym-search-result active";
     }
 

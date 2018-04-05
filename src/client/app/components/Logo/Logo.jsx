@@ -3,11 +3,11 @@ import React from 'react';
 
 export default class Logo extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 
-  render () {
+  render() {
     return <div className="columns">
       <div className="column is-1"></div>
       <div className="column is-10">

@@ -10038,7 +10038,7 @@ function updateLink(linkElement, options, obj) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10056,49 +10056,49 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var AboutBox = function (_React$Component) {
-    _inherits(AboutBox, _React$Component);
+  _inherits(AboutBox, _React$Component);
 
-    function AboutBox(props) {
-        _classCallCheck(this, AboutBox);
+  function AboutBox(props) {
+    _classCallCheck(this, AboutBox);
 
-        var _this = _possibleConstructorReturn(this, (AboutBox.__proto__ || Object.getPrototypeOf(AboutBox)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (AboutBox.__proto__ || Object.getPrototypeOf(AboutBox)).call(this, props));
 
-        _this.state = {
-            infoBoxToggled: false
-        };
+    _this.state = {
+      infoBoxToggled: false
+    };
 
-        _this.toggleHelp = _this.toggleHelp.bind(_this);
-        return _this;
+    _this.toggleHelp = _this.toggleHelp.bind(_this);
+    return _this;
+  }
+
+  _createClass(AboutBox, [{
+    key: "toggleHelp",
+    value: function toggleHelp() {
+      if (!this.state.infoBoxToggled) {
+        this.setState({ infoBoxToggled: true });
+      } else {
+        this.setState({ infoBoxToggled: false });
+      }
     }
+  }, {
+    key: "render",
+    value: function render() {
+      var aboutBoxClass = "wym-about-box";
+      var aboutBoxText = "What is WYM?";
 
-    _createClass(AboutBox, [{
-        key: "toggleHelp",
-        value: function toggleHelp() {
-            if (!this.state.infoBoxToggled) {
-                this.setState({ infoBoxToggled: true });
-            } else {
-                this.setState({ infoBoxToggled: false });
-            }
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var aboutBoxClass = "wym-about-box";
-            var aboutBoxText = "What is WYM?";
+      if (this.state.infoBoxToggled) {
+        aboutBoxClass += " helpToggled";
+        aboutBoxText = "WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
+      }
+      return _react2.default.createElement(
+        "div",
+        { onClick: this.toggleHelp, className: "wym-about-box" },
+        aboutBoxText
+      );
+    }
+  }]);
 
-            if (this.state.infoBoxToggled) {
-                aboutBoxClass += " helpToggled";
-                aboutBoxText = "WYM (What You Missed) is an useful tool for everyone. You want to know what happened in a movie until the moment you just zapped in? Here you go. #NoMoreSpoilers";
-            }
-            return _react2.default.createElement(
-                "div",
-                { onClick: this.toggleHelp, className: "wym-about-box" },
-                aboutBoxText
-            );
-        }
-    }]);
-
-    return AboutBox;
+  return AboutBox;
 }(_react2.default.Component);
 
 exports.default = AboutBox;
@@ -10265,7 +10265,7 @@ exports.default = MovieInfo;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10299,157 +10299,157 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var SearchArea = function (_React$Component) {
-    _inherits(SearchArea, _React$Component);
+  _inherits(SearchArea, _React$Component);
 
-    function SearchArea(props) {
-        _classCallCheck(this, SearchArea);
+  function SearchArea(props) {
+    _classCallCheck(this, SearchArea);
 
-        var _this = _possibleConstructorReturn(this, (SearchArea.__proto__ || Object.getPrototypeOf(SearchArea)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (SearchArea.__proto__ || Object.getPrototypeOf(SearchArea)).call(this, props));
 
-        _this.state = {
-            isSearchInProgress: false,
-            isInInitialState: true,
-            movieSearchValue: "",
-            countOfMovieResults: 0,
-            movieResults: [],
-            numberOfMovieResultHovered: 0,
-            selectedMovieData: {
-                "key": null,
-                "title": "XXX",
-                "img": "",
-                "duration": 10000,
-                "genre": "Generic",
-                "plot": [{
-                    "key": "0",
-                    "text": "XYZ ",
-                    "timecode": 3000
-                }]
-            }
-        };
+    _this.state = {
+      isSearchInProgress: false,
+      isInInitialState: true,
+      movieSearchValue: "",
+      countOfMovieResults: 0,
+      movieResults: [],
+      numberOfMovieResultHovered: 0,
+      selectedMovieData: {
+        "key": null,
+        "title": "XXX",
+        "img": "",
+        "duration": 10000,
+        "genre": "Generic",
+        "plot": [{
+          "key": "0",
+          "text": "XYZ ",
+          "timecode": 3000
+        }]
+      }
+    };
 
-        _this.onInput = _this.onInput.bind(_this);
-        _this.calculateSearchResultsAndSaveToState = _this.calculateSearchResultsAndSaveToState.bind(_this);
-        _this.getArrayOfSearchResults = _this.getArrayOfSearchResults.bind(_this);
-        _this.selectMovie = _this.selectMovie.bind(_this);
-        _this.onKeyDown = _this.onKeyDown.bind(_this);
-        return _this;
+    _this.onInput = _this.onInput.bind(_this);
+    _this.calculateSearchResultsAndSaveToState = _this.calculateSearchResultsAndSaveToState.bind(_this);
+    _this.getArrayOfSearchResults = _this.getArrayOfSearchResults.bind(_this);
+    _this.selectMovie = _this.selectMovie.bind(_this);
+    _this.onKeyDown = _this.onKeyDown.bind(_this);
+    return _this;
+  }
+
+  _createClass(SearchArea, [{
+    key: 'onInput',
+    value: function onInput(value) {
+      if (value == "") {
+        this.setState({ movieResults: [] });
+      }
+      this.setState({ movieSearchValue: value });
+      this.setState({ isSearchInProgress: true, isInInitialState: false });
     }
+  }, {
+    key: 'calculateSearchResultsAndSaveToState',
+    value: function calculateSearchResultsAndSaveToState(searchTerm) {
+      var movieResults = [];
+      var movieResultCounter = 0;
 
-    _createClass(SearchArea, [{
-        key: 'onInput',
-        value: function onInput(value) {
-            if (value == "") {
-                this.setState({ movieResults: [] });
-            }
-            this.setState({ movieSearchValue: value });
-            this.setState({ isSearchInProgress: true, isInInitialState: false });
+      _movieTest2.default.filter(function (movie) {
+        if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          movieResults.push(movie);
+          movieResultCounter++;
+        };
+      });
+
+      this.setState({ numberOfMovieResultHovered: -1 });
+      this.setState({ countOfMovieResults: movieResultCounter });
+      this.setState({ movieResults: movieResults });
+    }
+  }, {
+    key: 'getArrayOfSearchResults',
+    value: function getArrayOfSearchResults() {
+      var movieResults = [];
+
+      if (this.state.isSearchInProgress) {
+        for (var i = 0; i < this.state.movieResults.length; i++) {
+          if (this.state.numberOfMovieResultHovered == i) {
+            movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'true', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
+          } else {
+            movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'false', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
+          }
         }
-    }, {
-        key: 'calculateSearchResultsAndSaveToState',
-        value: function calculateSearchResultsAndSaveToState(searchTerm) {
-            var movieResults = [];
-            var movieResultCounter = 0;
-
-            _movieTest2.default.filter(function (movie) {
-                if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    movieResults.push(movie);
-                    movieResultCounter++;
-                };
-            });
-
-            this.setState({ numberOfMovieResultHovered: -1 });
-            this.setState({ countOfMovieResults: movieResultCounter });
-            this.setState({ movieResults: movieResults });
+      }
+      return movieResults;
+    }
+  }, {
+    key: 'selectMovie',
+    value: function selectMovie(numberOfMovieResultHovered) {
+      this.setState({ isSearchInProgress: false });
+      this.setState({ movieSearchValue: this.state.movieResults[numberOfMovieResultHovered].title });
+      this.props.saveMovieResultToState(this.state.movieResults[numberOfMovieResultHovered]);
+    }
+  }, {
+    key: 'onKeyDown',
+    value: function onKeyDown(event) {
+      if (event.keyCode == 40) {
+        if (this.state.numberOfMovieResultHovered < this.state.countOfMovieResults - 1) {
+          var numberOfMovieResultHovered = this.state.numberOfMovieResultHovered + 1;
+          this.setState({ numberOfMovieResultHovered: numberOfMovieResultHovered });
         }
-    }, {
-        key: 'getArrayOfSearchResults',
-        value: function getArrayOfSearchResults() {
-            var movieResults = [];
-
-            if (this.state.isSearchInProgress) {
-                for (var i = 0; i < this.state.movieResults.length; i++) {
-                    if (this.state.numberOfMovieResultHovered == i) {
-                        movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'true', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
-                    } else {
-                        movieResults.push(_react2.default.createElement(_SearchResult2.default, { key: i, resultNumber: i, active: 'false', movieResult: this.state.movieResults[i], onSubmit: this.selectMovie }));
-                    }
-                }
-            }
-            return movieResults;
+      }
+      if (event.keyCode == 38) {
+        if (this.state.numberOfMovieResultHovered > 0) {
+          var _numberOfMovieResultHovered = this.state.numberOfMovieResultHovered - 1;
+          this.setState({ numberOfMovieResultHovered: _numberOfMovieResultHovered });
         }
-    }, {
-        key: 'selectMovie',
-        value: function selectMovie(numberOfMovieResultHovered) {
-            this.setState({ isSearchInProgress: false });
-            this.setState({ movieSearchValue: this.state.movieResults[numberOfMovieResultHovered].title });
-            this.props.saveMovieResultToState(this.state.movieResults[numberOfMovieResultHovered]);
-        }
-    }, {
-        key: 'onKeyDown',
-        value: function onKeyDown(event) {
-            if (event.keyCode == 40) {
-                if (this.state.numberOfMovieResultHovered < this.state.countOfMovieResults - 1) {
-                    var numberOfMovieResultHovered = this.state.numberOfMovieResultHovered + 1;
-                    this.setState({ numberOfMovieResultHovered: numberOfMovieResultHovered });
-                }
-            }
-            if (event.keyCode == 38) {
-                if (this.state.numberOfMovieResultHovered > 0) {
-                    var _numberOfMovieResultHovered = this.state.numberOfMovieResultHovered - 1;
-                    this.setState({ numberOfMovieResultHovered: _numberOfMovieResultHovered });
-                }
-            }
-            if (event.keyCode == 13) {
-                this.selectMovie(this.state.numberOfMovieResultHovered);
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var movieResultsDiv = this.getArrayOfSearchResults();
+      }
+      if (event.keyCode == 13) {
+        this.selectMovie(this.state.numberOfMovieResultHovered);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var movieResultsDiv = this.getArrayOfSearchResults();
 
-            var headerClass = "wym-header";
-            if (this.state.isInInitialState) {
-                headerClass += " onstart";
-            }
+      var headerClass = "wym-header";
+      if (this.state.isInInitialState) {
+        headerClass += " onstart";
+      }
 
-            var searchIconClass = "wym-movie-search-icon";
-            if (this.state.isSearchInProgress) {
-                searchIconClass += ' ' + searchIconClass + '--active';
-            }
+      var searchIconClass = "wym-movie-search-icon";
+      if (this.state.isSearchInProgress) {
+        searchIconClass += ' ' + searchIconClass + '--active';
+      }
 
-            return _react2.default.createElement(
-                'div',
-                { className: headerClass, onKeyDown: this.onKeyDown },
-                _react2.default.createElement(_Logo2.default, null),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'wym-movie-search' },
-                    _react2.default.createElement(
-                        'span',
-                        { className: searchIconClass },
-                        'search'
-                    ),
-                    _react2.default.createElement(
-                        _OnTypeInput2.default,
-                        { value: this.state.movieSearchValue, onChange: this.onInput, onSubmit: this.calculateSearchResultsAndSaveToState },
-                        'search'
-                    ),
-                    _react2.default.createElement(
-                        'table',
-                        { className: 'table is-narrow wym-results' },
-                        _react2.default.createElement(
-                            'tfoot',
-                            null,
-                            movieResultsDiv
-                        )
-                    )
-                )
-            );
-        }
-    }]);
+      return _react2.default.createElement(
+        'div',
+        { className: headerClass, onKeyDown: this.onKeyDown },
+        _react2.default.createElement(_Logo2.default, null),
+        _react2.default.createElement(
+          'div',
+          { className: 'wym-movie-search' },
+          _react2.default.createElement(
+            'span',
+            { className: searchIconClass },
+            'search'
+          ),
+          _react2.default.createElement(
+            _OnTypeInput2.default,
+            { value: this.state.movieSearchValue, onChange: this.onInput, onSubmit: this.calculateSearchResultsAndSaveToState },
+            'search'
+          ),
+          _react2.default.createElement(
+            'table',
+            { className: 'table is-narrow wym-results' },
+            _react2.default.createElement(
+              'tfoot',
+              null,
+              movieResultsDiv
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return SearchArea;
+  return SearchArea;
 }(_react2.default.Component);
 
 exports.default = SearchArea;
@@ -10679,7 +10679,7 @@ exports.default = MoviePoster;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10709,109 +10709,109 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var TimecodeInput = function (_React$Component) {
-	_inherits(TimecodeInput, _React$Component);
+  _inherits(TimecodeInput, _React$Component);
 
-	function TimecodeInput(props) {
-		_classCallCheck(this, TimecodeInput);
+  function TimecodeInput(props) {
+    _classCallCheck(this, TimecodeInput);
 
-		var _this = _possibleConstructorReturn(this, (TimecodeInput.__proto__ || Object.getPrototypeOf(TimecodeInput)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (TimecodeInput.__proto__ || Object.getPrototypeOf(TimecodeInput)).call(this, props));
 
-		_this.state = {
-			hours: 0,
-			minutes: 0,
-			seconds: 0,
-			currentTimeInMinutes: 0
-		};
-		_this.onChangeHours = _this.onChangeHours.bind(_this);
-		_this.onChangeMinutes = _this.onChangeMinutes.bind(_this);
-		_this.onChangeSeconds = _this.onChangeSeconds.bind(_this);
-		_this.onSubmit = _this.onSubmit.bind(_this);
-		_this.onSliderSubmit = _this.onSliderSubmit.bind(_this);
-		return _this;
-	}
+    _this.state = {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      currentTimeInMinutes: 0
+    };
+    _this.onChangeHours = _this.onChangeHours.bind(_this);
+    _this.onChangeMinutes = _this.onChangeMinutes.bind(_this);
+    _this.onChangeSeconds = _this.onChangeSeconds.bind(_this);
+    _this.onChangeSlider = _this.onChangeSlider.bind(_this);
+    _this.onSubmit = _this.onSubmit.bind(_this);
+    return _this;
+  }
 
-	_createClass(TimecodeInput, [{
-		key: 'onChangeHours',
-		value: function onChangeHours(value) {
-			var currentTimeInMinutes = parseInt(value * 60) + parseInt(this.state.minutes);
-			this.setState({ hours: value }, this.onSubmit);
-			this.setState({ currentTimeInMinutes: currentTimeInMinutes });
-		}
-	}, {
-		key: 'onChangeMinutes',
-		value: function onChangeMinutes(value) {
-			var currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(value);
-			this.setState({ minutes: value }, this.onSubmit);
-			this.setState({ currentTimeInMinutes: currentTimeInMinutes });
-		}
-	}, {
-		key: 'onChangeSeconds',
-		value: function onChangeSeconds(value) {
-			this.setState({ seconds: value });
-		}
-	}, {
-		key: 'onSubmit',
-		value: function onSubmit() {
-			var hours = this.state.hours + '';
-			var minutes = this.state.minutes + '';
-			var seconds = this.state.seconds;
+  _createClass(TimecodeInput, [{
+    key: 'onChangeHours',
+    value: function onChangeHours(value) {
+      var currentTimeInMinutes = parseInt(value * 60) + parseInt(this.state.minutes);
+      this.setState({ hours: value }, this.onSubmit);
+      this.setState({ currentTimeInMinutes: currentTimeInMinutes });
+    }
+  }, {
+    key: 'onChangeMinutes',
+    value: function onChangeMinutes(value) {
+      var currentTimeInMinutes = parseInt(this.state.hours * 60) + parseInt(value);
+      this.setState({ minutes: value }, this.onSubmit);
+      this.setState({ currentTimeInMinutes: currentTimeInMinutes });
+    }
+  }, {
+    key: 'onChangeSeconds',
+    value: function onChangeSeconds(value) {
+      this.setState({ seconds: value });
+    }
+  }, {
+    key: 'onChangeSlider',
+    value: function onChangeSlider(value) {
+      this.onChangeHours((value - value % 60) / 60);
+      this.onChangeMinutes(value % 60);
+      this.onChangeSeconds(0);
 
-			var zero = "" + 0;
+      var minutes = value % 60;
+      var hours = (value - minutes) / 60;
 
-			if (minutes.toString(10).length == 1) {
-				minutes = zero.concat(minutes);
-			}
-			if (seconds.toString(10).length == 1) {
-				seconds = zero.concat(seconds);
-			}
+      var zero = "" + 0;
 
-			var timecode = hours.concat(minutes.concat(seconds));
+      if (minutes.toString(10).length == 1) {
+        minutes = zero.concat(minutes);
+      }
 
-			if (this.props.onSubmit) {
-				this.props.onSubmit(timecode);
-			}
-		}
-	}, {
-		key: 'onSliderSubmit',
-		value: function onSliderSubmit(value) {
-			this.onChangeHours((value - value % 60) / 60);
-			this.onChangeMinutes(value % 60);
-			this.onChangeSeconds(0);
+      var timecode = hours.toString().concat(minutes.toString().concat("00"));
 
-			var minutes = value % 60;
-			var hours = (value - minutes) / 60;
+      if (this.props.onSubmit) {
+        this.props.onSubmit(timecode);
+      }
+    }
+  }, {
+    key: 'onSubmit',
+    value: function onSubmit() {
+      var hours = this.state.hours + '';
+      var minutes = this.state.minutes + '';
+      var seconds = this.state.seconds;
 
-			var zero = "" + 0;
+      var zero = "" + 0;
 
-			if (minutes.toString(10).length == 1) {
-				minutes = zero.concat(minutes);
-			}
+      if (minutes.toString(10).length == 1) {
+        minutes = zero.concat(minutes);
+      }
+      if (seconds.toString(10).length == 1) {
+        seconds = zero.concat(seconds);
+      }
 
-			var timecode = hours.toString().concat(minutes.toString().concat("00"));
+      var timecode = hours.concat(minutes.concat(seconds));
 
-			if (this.props.onSubmit) {
-				this.props.onSubmit(timecode);
-			}
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'wym-time-input' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'wym-timecode-input' },
-					_react2.default.createElement(_Input2.default, { value: this.state.hours, placeholder: 'h', onChange: this.onChangeHours }),
-					_react2.default.createElement(_Input2.default, { value: this.state.minutes, placeholder: 'm', onChange: this.onChangeMinutes }),
-					_react2.default.createElement(_Input2.default, { value: this.state.seconds, placeholder: 's', onChange: this.onChangeSeconds })
-				),
-				_react2.default.createElement(_InputSlider2.default, { value: this.state.currentTimeInMinutes, movieLengthInMinutes: this.props.movieLengthInMinutes, onSubmit: this.onSliderSubmit })
-			);
-		}
-	}]);
+      if (this.props.onSubmit) {
+        this.props.onSubmit(timecode);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'wym-time-input' },
+        _react2.default.createElement(
+          'div',
+          { className: 'wym-timecode-input' },
+          _react2.default.createElement(_Input2.default, { value: this.state.hours, placeholder: 'h', onChange: this.onChangeHours }),
+          _react2.default.createElement(_Input2.default, { value: this.state.minutes, placeholder: 'm', onChange: this.onChangeMinutes }),
+          _react2.default.createElement(_Input2.default, { value: this.state.seconds, placeholder: 's', onChange: this.onChangeSeconds })
+        ),
+        _react2.default.createElement(_InputSlider2.default, { value: this.state.currentTimeInMinutes, movieLengthInMinutes: this.props.movieLengthInMinutes, onSubmit: this.onChangeSlider })
+      );
+    }
+  }]);
 
-	return TimecodeInput;
+  return TimecodeInput;
 }(_react2.default.Component);
 
 exports.default = TimecodeInput;

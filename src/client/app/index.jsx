@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import AboutBox from './components/AboutBox/AboutBox.jsx';
 import SearchArea from './components/SearchArea/SearchArea.jsx';
 import Logo from './components/Logo/Logo.jsx';
@@ -19,15 +19,15 @@ class App extends React.Component {
       windowHeight: window.innerHeight,
       currentMovieData: {
         "key": null,
-        "title":"XXX",
-        "img":"",
-        "duration":10000,
-        "genre":"Generic",
-        "plot":[
+        "title": "XXX",
+        "img": "",
+        "duration": 10000,
+        "genre": "Generic",
+        "plot": [
           {
-            "key":"0",
-            "text":"XYZ ",
-            "timecode":3000
+            "key": "0",
+            "text": "XYZ ",
+            "timecode": 3000
           }
         ]
       }
@@ -36,27 +36,27 @@ class App extends React.Component {
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
 
   }
-  
+
   componentWillMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
-    
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleWindowSizeChange);
   }
-    
+
   handleWindowSizeChange() {
     this.setState({ windowWidth: window.innerWidth, windowHeight: window.innerHeight });
   }
-  
-  saveMovieResultToState (movieResult) {
-    this.setState({currentMovieData: movieResult});
+
+  saveMovieResultToState(movieResult) {
+    this.setState({ currentMovieData: movieResult });
   }
 
-  render () {
+  render() {
     return <div>
-      <AboutBox/>
-      <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState}/>
+      <AboutBox />
+      <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState} />
       <div className="container wym-content">
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>
@@ -66,4 +66,4 @@ class App extends React.Component {
 }
 
 
-render(<App/>, document.getElementById('app'));
+render(<App />, document.getElementById('app'));
