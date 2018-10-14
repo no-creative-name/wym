@@ -4,8 +4,6 @@ var path = require('path');
 var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
-var Visualizer = require('webpack-visualizer-plugin');
-
 var config = {
   entry: APP_DIR + '/index.jsx',
   output: {
@@ -15,9 +13,10 @@ var config = {
   devServer: {
     open: true, // to open the local server in browser
     contentBase: __dirname + '/src/client',
+    hot: true
   },
   module : {
-    loaders : [
+    rules : [
       {
         test : /\.jsx?/,
         include : APP_DIR,
@@ -48,7 +47,9 @@ var config = {
       }
     ]
   },
-  plugins : [new Visualizer()]
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
 
 module.exports = config;

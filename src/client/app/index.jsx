@@ -65,5 +65,6 @@ class App extends React.Component {
 
 }
 
+module.hot.accept();
 
 render(<App />, document.getElementById('app'));
