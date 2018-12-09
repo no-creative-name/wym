@@ -40,10 +40,16 @@ var config = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-            'file-loader?hash=sha512&digest=hex&name=images/[hash].[ext]',
-            'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
-        ]
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true,
+              name: 'images/[name].[ext]'
+            },
+          },
+        ],
       }
     ]
   },

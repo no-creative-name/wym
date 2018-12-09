@@ -8,8 +8,8 @@
     "webpack": "node_modules/.bin/webpack --config ./webpack.config.js --mode development",
     "webpack-dev-server": "node_modules/.bin/webpack-dev-server --config ./webpack.config.js --mode development",
     "webpack:watch": "node_modules/.bin/webpack --watch",
-    "sass": "node-sass ./src/client/app/sass/ -o ./src/client/public/stylesheets/",
-    "sass:watch": "node-sass ./src/client/app/sass/ -o ./src/client/public/stylesheets/ --watch",
+    "sass": "node-sass ./src/sass/ -o ./dist/stylesheets/",
+    "sass:watch": "node-sass ./src/sass/ -o ./dist/stylesheets/ --watch",
     "packit:watch": "start npm run webpack:watch && start npm run sass:watch"
   },
   "author": "",

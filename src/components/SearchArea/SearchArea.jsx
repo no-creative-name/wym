@@ -1,8 +1,8 @@
 import React from 'react';
 import Logo from '../Logo/Logo.jsx';
 import OnTypeInput from '../OnTypeInput/OnTypeInput.jsx';
-import TestMovieData from '../../../../data/movieTest.json';
 import SearchResult from '../SearchResult/SearchResult.jsx';
+import movies from '../../_mock/movies.js';
 
 export default class SearchArea extends React.Component {
 
@@ -50,7 +50,7 @@ export default class SearchArea extends React.Component {
     let movieResults = [];
     let movieResultCounter = 0;
 
-    TestMovieData.filter(
+    movies.data.filter(
       function (movie) {
         if (movie.title.toLowerCase().includes(searchTerm.toLowerCase())) {
           movieResults.push(movie);
