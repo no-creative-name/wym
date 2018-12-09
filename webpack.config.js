@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var BUILD_DIR = path.resolve(__dirname, 'dist/');
 var APP_DIR = path.resolve(__dirname, 'src/');
@@ -54,7 +55,10 @@ var config = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      {from: 'src/images/favicon.png', to: 'images'}
+    ])
   ]
 };
 
