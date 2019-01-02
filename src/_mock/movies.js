@@ -53,7 +53,7 @@ export default {
         {  
            "key":2,
            "title":"The Hunger Games",
-           "img":"https://2982-presscdn-29-70-pagely.netdna-ssl.com/wp-content/uploads/2015/11/The-Hunger-Games-Poster1.jpg",
+           "img":"https://m.media-amazon.com/images/M/MV5BMjA4NDg3NzYxMF5BMl5BanBnXkFtZTcwNTgyNzkyNw@@._V1_UX182_CR0,0,182,268_AL_.jpg",
            "duration":22200,
            "year":2012,
            "genre":"Science Fiction",
@@ -78,7 +78,7 @@ export default {
         {  
            "key":3,
            "title":"Ghostbusters",
-           "img":"http://netdna.walyou.netdna-cdn.com/wp-content/uploads//2011/10/Ghostbusters-Movie-Poster.jpg",
+           "img":"https://m.media-amazon.com/images/M/MV5BMTkxMjYyNzgwMl5BMl5BanBnXkFtZTgwMTE3MjYyMTE@._V1_UX182_CR0,0,182,268_AL_.jpg",
            "duration":14500,
            "year":1984,
            "genre":"Supernatural",
