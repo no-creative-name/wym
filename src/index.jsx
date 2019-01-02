@@ -63,7 +63,7 @@ class App extends React.Component {
       <AboutBox />
       <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState} resetMovieInfo={this.resetMovieInfo}/>
       <div className="container wym-content">
-        <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
+        <MovieInfo movie={this.state.currentMovieData} key={this.state.currentMovieData.key}></MovieInfo>
       </div>
     </div>;
   }

@@ -75,7 +75,6 @@ export default class MovieInfo extends React.Component {
       </div>;
     }
     else {
-      this.setState({ fullplot: "" });
       return <div>
       </div>;
     }
