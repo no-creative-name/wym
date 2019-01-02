@@ -56,6 +56,11 @@ export default class MovieInfo extends React.Component {
     if (this.state.fullplot != '') {
       plotClass += "-active";
     }
+    
+    let prompt = "Enter a time to see What You Missed!";
+    if (this.state.fullplot != '') {
+      prompt = "What You Missed:";
+    }
 
     if (this.props.movie.key != null) {
       return <div className="wym-movie-info">
@@ -70,6 +75,7 @@ export default class MovieInfo extends React.Component {
         </div>
         <div className="wym-plotbuilder">
           <TimecodeInput onSubmit={this.buildPlot} movieLengthInMinutes={this.convertTimecodeToMinutes(this.props.movie.duration)}></TimecodeInput>
+          <div className="wym-subtitle">{prompt}</div>
           <div className={plotClass}>{this.state.fullplot}</div>
         </div>
       </div>;

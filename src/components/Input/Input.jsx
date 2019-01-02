@@ -18,9 +18,7 @@ export default class Input extends React.Component {
   }
 
   onClick(event) {
-    if (this.props.onChange) {
-      this.props.onChange(0);
-    }
+    event.target.select();
   }
 
   render() {
