@@ -41,6 +41,7 @@ export default class SearchArea extends React.Component {
   onInput(value) {
     if (value == "") {
       this.setState({ movieResults: [] });
+      this.props.resetMovieInfo();
     }
     this.setState({ movieSearchValue: value });
     this.setState({ isSearchInProgress: true, isInInitialState: false });

@@ -34,6 +34,7 @@ class App extends React.Component {
     }
     this.saveMovieResultToState = this.saveMovieResultToState.bind(this);
     this.handleWindowSizeChange = this.handleWindowSizeChange.bind(this);
+    this.resetMovieInfo = this.resetMovieInfo.bind(this);
 
   }
 
@@ -53,10 +54,14 @@ class App extends React.Component {
     this.setState({ currentMovieData: movieResult });
   }
 
+  resetMovieInfo() {
+    this.setState({ currentMovieData: {"key": null}});
+  }
+
   render() {
     return <div>
       <AboutBox />
-      <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState} />
+      <SearchArea getMovieResults={this.getMovieResults} saveMovieResultToState={this.saveMovieResultToState} resetMovieInfo={this.resetMovieInfo}/>
       <div className="container wym-content">
         <MovieInfo movie={this.state.currentMovieData}></MovieInfo>
       </div>

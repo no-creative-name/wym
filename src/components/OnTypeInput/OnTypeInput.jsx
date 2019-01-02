@@ -20,7 +20,6 @@ export default class OnTypeInput extends React.Component {
     }
   }
 
-
   onClick(event) {
     this.props.onChange('');
   }
