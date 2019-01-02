@@ -42,12 +42,17 @@ var config = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
-          'file-loader',
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images'
+            }
+          },
           {
             loader: 'image-webpack-loader',
             options: {
               disable: true,
-              name: 'images/[name].[ext]'
+              name: '[name].[ext]'
             },
           },
         ],
