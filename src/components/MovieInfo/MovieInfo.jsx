@@ -58,7 +58,6 @@ export default class MovieInfo extends React.Component {
     }
 
     if (this.props.movie.key != null) {
-
       return <div className="wym-movie-info">
         <div className="wym-movie-meta">
           <MoviePoster className="column is-4" imageSource={this.props.movie.img}></MoviePoster>
@@ -76,6 +75,7 @@ export default class MovieInfo extends React.Component {
       </div>;
     }
     else {
+      this.setState({ fullplot: "" });
       return <div>
       </div>;
     }
